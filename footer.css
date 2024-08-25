@@ -1,0 +1,36 @@
+/*footer.css*/
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #0d3626;
+    color: #f2f2f2;
+    border-top: 3px solid #1b1b1b;
+}
+
+
+footer h4 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 0.5em;
+}
+
+footer ul li a {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #FEAD6C;
+}
