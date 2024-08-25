@@ -1,43 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=New+Amsterdam&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-</head>
-<style>
-    body{
-        font-family: "Montserrat", sans-serif;
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=New+Amsterdam&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Montserrat", sans-serif;
     }
-</style>
-<body>
+  </style>
+
+  <!--Conteudo Principal-->
+  <body>
     <section>
-    <nav>
+      <nav>
         <ul class="nav-list">
-            <li><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png" alt="Logo da Barbearia NW Salon" class="img-logo"></a></li>
+          <li class="logo">
+            <a href="#"
+              ><img
+                src="img/logo.jpeg"
+                alt="Logo da Barbearia NW Salon"
+                class="img-logo"
+            /></a>
+          </li>
+          <div class="nav-items">
             <li><a href="#">Início</a></li>
             <li><a href="#">Serviços</a></li>
             <li><a href="#">Sobre</a></li>
             <li><a href="#">Contato</a></li>
+          </div>
         </ul>
-    </nav>
+      </nav>
 
-    <main>
+      <main>
         <div class="content">
-            <h3 class="subtitle">Bem vindo a <span class="nw">New Age Saloon</span></h3>
-            <h1 class="title">Transforme Seu Visual Aqui!</h1>
-            <p class="p">Cortes Modernos, Atendimento Impecável e Ambiente Aconchegante. Agende Seu Horário Agora!</p>
-            <a href="" class="btn">Fazer Agendamento</a>
+          <h3 class="subtitle">
+            Bem vindo a <span class="nw">New Age Saloon</span>
+          </h3>
+          <h1 class="title">Transforme Seu Visual Aqui!</h1>
+          <p class="p">
+            Cortes Modernos, Atendimento Impecável e Ambiente Aconchegante.
+            Agende Seu Horário Agora!
+          </p>
+          <a href="" class="btn">Fazer Agendamento</a>
         </div>
-        
+
         <div class="image-container">
-            <img class="img" src="/barber.png" alt="Imagem barbearia">
+          <img class="img" src="/barber.png" alt="Imagem barbearia" />
         </div>
-    </main>
+      </main>
     </section>
-</body>
+
+<!--Serviços-->
+<section class="services">
+    <h1>Serviços</h1>
+    <ul class="description">
+        <li>Corte Masculino R$40</li>
+        <br>
+        <hr>
+        <li>Barba e Bigode R$35</li>
+        <br>
+        <hr>
+        <li>Combo: Corte Masculino + Barba e Bigode R$65</li>
+        <br>
+        <hr>
+        <li>Corte Infantil R$30</li>
+        <br>
+        <hr>
+        <li>Sobrancelha R$10</li>
+        <br>
+        <hr>
+        <li>Combo: Corte Masculino + Sobrancelha R$50</li>
+        <br>
+        <hr>
+        <li>Outros Serviços da Barbearia  <a href="#">Clique aqui</a></li>
+        <br>
+        <hr>
+    
+    </ul>
+</section>
+   
+<!--Footer-->
+    <footer>
+        <div class="contact">
+            <h4>Entre em contato</h4>
+            <ul class="address">
+                <li><i class="fa fa-map-marker"></i>
+                    Rua Serra dos Aimorés, 38c<br>
+                    Itam Paulista<br>
+                    SP
+                </li>
+                <br>
+                <li><i class="fa fa-envelope"></i>
+                    nw.salon@gmail.com
+                </li>
+                <br>
+                <li><i class="fa-brands fa-whatsapp"></i>
+                    <strong>WhatsApp</strong><br>
+                    (11) 99999-8888
+                </li>
+            </ul>
+        </div>
+    <br>
+        <div class="menu">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    <br>
+        <div class="social-media">
+            <h4>Nos siga</h4>
+            <ul>
+                <li><a href="https://www.instagram.com/nw.salon/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+
+  </body>
 </html>
