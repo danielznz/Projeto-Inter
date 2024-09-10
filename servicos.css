@@ -1,124 +1,136 @@
 /*Servicos.css*/
+:root {
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --branco: #ffffff;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155;
+    --texto: #333;
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+  }
+  
 
-.title-services{
-    color: #1b1b1b;
-    font-size: 5rem;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
-    font-family: "Big Shoulders Display", sans-serif;
-}
-
-.text-card{
-    text-align: center;
-}
-.card-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 5rem; 
-    gap: 40px; 
-    max-width: 1300px;
-    margin: 0 auto;
-    align-items: center;
-}
-
-
-.card {
-    position: relative;
-    width: 30%; 
-    height: 450px;
-    background-color: #1b1b1b;
-    border: 5px solid #1b1b1b;
-    box-shadow: 0px 10px 10px #0000001f;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.img-card {
-    width: 95%;
-    height: 75%;
-    object-fit: cover;
-}
-
-.agendamento {
-    position: absolute;
+  .services-agendamento {
+    background-color: var(--secundaria);
     border-radius: 5px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.54);
+    color: var(--primaria);
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px 20px;
+    position: absolute;
+    text-decoration: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffa155;
-    box-shadow: 0px 10px 10px #0000008a;
-    padding: 15px 20px;
-    font-weight: bold;
-    color: #1b1b1b;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.agendamento:hover{
-    color: #1b1b1b;
-    background-color: #ff9a48;
-}
-
-.text-card {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .services-agendamento:hover {
+    background-color: var(--apoio2);
+    color: var(--primaria);
+  }
+  
+  .services-card {
+    background-color: var(--primaria);
+    border: 5px solid var(--primaria);
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.54);
+    height: 450px;
+    overflow: hidden;
+    position: relative;
     text-align: center;
-    margin-bottom: .5rem;
-}
-
-.title-card {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #f2f2f2;
-    margin-top: 1rem;
-    white-space: nowrap;
-}
-
-.p-card {
+    width: 30%;
+  }
+  
+  .services-img-card {
+    height: 75%;
+    object-fit: cover;
+    width: 95%;
+  }
+  
+  .services-link {
+    background-color: var(--primaria);
+    border-radius: 50px;
+    color: var(--apoio6);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .services-link:hover {
+    background-color: var(--apoio4);
+  }
+  
+  .services-p-card {
+    color: var(--apoio5);
+    font-family: var(--fonteServices);
     font-size: 2rem;
     font-weight: bold;
-    color: #ccc;
-    font-family: "Big Shoulders Display", sans-serif;
-    margin-top: .5rem;
-}
-
-
-.services {
-
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    height: 150vh; 
-    padding: 100px 0; 
+    margin-top: 0.5rem;
+  }
+  
+  .services {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 150vh;
+    padding: 100px 0;
     position: relative;
-}
-
-.services h1 {
-    font-size: 4.5rem; 
-    text-transform: uppercase; 
-    text-align: center; 
-    font-weight: bold; 
-    margin: 0; 
-    letter-spacing: 2px; 
+  }
+  
+  .services-card-section {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 20px 5rem;
+  }
+  
+  .services-text-card {
+    color: var(--apoio6);
+    margin-bottom: 0.5rem;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  
+  .services-title-card {
+    color: var(--apoio6);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    white-space: nowrap;
+  }
+  
+  .services-title {
+    color: var(--primaria);
+    font-family: var(--fonteServices);
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .services h1 {
+    font-size: 4.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0;
     position: relative;
+    text-align: center;
+    text-transform: uppercase;
     z-index: 2;
-}
-
-.link-services{
-    background-color: #1b1b1b;
-    padding: 25px;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    color: #f2f2f2;
-    transition: .3s;
-    cursor: pointer;
-}
-
-.link-services:hover{
-    background-color: #2C2C2C;
-}
+  }
+  
