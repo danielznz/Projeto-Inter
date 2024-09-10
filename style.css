@@ -28,6 +28,7 @@ body{
     justify-content: space-between;
     list-style: none;
     padding: 20px;
+    max-width: 1200px;
 
 }
 
@@ -45,9 +46,13 @@ body{
     font-size: 1.3rem;
 }
 
+.nav-list a:hover{
+    color: #ffa155;
+}
+
 
 .img-logo{
-    height: 50px;
+    height: 70px;
   
 }
 
