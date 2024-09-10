@@ -13,7 +13,12 @@ body{
 
 .main{
     height: 100vh;
-    background-image: url("img/back.png");
+    background-image: url("img/back3.svg");
+}
+
+.textura{
+    background-image: url("img/t.svg");
+
 }
 
 
@@ -40,10 +45,7 @@ body{
     font-size: 1.3rem;
 }
 
-a:hover{
-    color: #FDAC6B;
-    transition: 0.3s all;
-}
+
 .img-logo{
     height: 50px;
   
@@ -55,6 +57,7 @@ a:hover{
    font-size: 5rem;
    margin: 0%;
    margin-bottom: 1rem;
+   text-transform: uppercase;
 }
 
 .subtitle{
@@ -62,14 +65,14 @@ a:hover{
     font-weight: 900;
     font-size: 1.5rem;
     margin: 0%;
-    letter-spacing: .8rem;
+    letter-spacing: .97rem;
     font-weight: 400;
-    
  }
 
 span{
-    color: #FEAD6C;
-    font-weight: 700;
+    color: #ffa155;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 .p{
     font-size: 1.2rem;
@@ -80,9 +83,9 @@ span{
 }
 
 .btn{
-    padding: 15px 30px;
-    border: 2px solid #FDAC6B;
-    color: #fff;
+    padding: 20px 30px;
+    background-color:#ffa155;
+    color: #1b1b1b;
     font-size: 1.2rem;
     font-weight: 700;
     border-radius: 30px;
@@ -91,31 +94,22 @@ span{
     transition: .3s ease;
 }
 
-.btn-whatsapp{
-    padding: 15px 30px;
-    background-color: #15a149 ;
-    border: 2px solid #15a149 ;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 30px;
-    font-family: "Montserrat", sans-serif;
-    text-decoration: none;
-    transition: .3s ease;
+.btn:hover{
+    color: #1b1b1b;
+    background-color: #ee7919;
+    transition: 0.3s ease;
+}
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
 }
 
 .btn-whatsapp:hover{
-    background-color: #15a149 ;
-    color: #fff;
-    transition: 0.3s all;
-}
-
-
-.btn:hover{
-    background-color: #FEAD6C;
-    color: #fff;
-    transition: 0.3s all;
-    
+    scale: 1.2;
+    transition: .3s ease;
 }
 
 .content {
