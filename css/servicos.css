@@ -81,7 +81,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 150vh;
+    height: 155vh;
     padding: 100px 0;
     position: relative;
   }
@@ -122,15 +122,3 @@
     text-align: center;
     text-transform: uppercase;
   }
-  
-  .services h1 {
-    font-size: 4.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin: 0;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-  

@@ -22,6 +22,15 @@
   position: relative;
 }
 
+.about-title{
+  color: var(--primaria);
+  font-family: var(--fonteServices);
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .about-content {
   display: flex;
   align-items: center;
@@ -50,17 +59,24 @@
   margin-bottom: 2rem;
 }
 
-.about-text p {
+.about-p {
   font-size: 1.2rem;
   line-height: 1.3;
   margin-bottom: 20px;
+}
+
+.about-p-span {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  margin-bottom: 3rem;
 }
 
 .about-team-section {
   margin-top: 7rem;
   text-align: center;
   padding: 30px;
-  background-image: url("img/banner-team.png");
+  background-image: url("/img/about/banner-team.png");
 }
 
 .about-team-title {
@@ -120,15 +136,30 @@
 
 .btn-about {
   padding: 20px 30px;
-  background-color: var(--secundaria);
-  color: var(--primaria);
+  color: var(--apoio6);
   font-size: 1.2rem;
   font-weight: 700;
   border-radius: 30px;
   font-family: var(--fonteTitulo);
   text-decoration: none;
   transition: .3s ease;
-  margin-top: 20rem;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 500% 100%;
+  background-image: linear-gradient(to left, var(--apoio1),var(--apoio2));
+  animation: degrade-animado 10s infinite alternate;
+}
+
+@keyframes degrade-animado {
+  0% {
+      background-position-x: 0%;
+  }
+  100% {
+      background-position-x: 100%;
+  }
 }
 
 .info {

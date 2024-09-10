@@ -1,0 +1,109 @@
+/*footer.css*/
+
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --branco: #ffffff;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155;
+    --texto: #333;
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+  }
+  
+  .btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
+}
+
+.btn-whatsapp:hover{
+    scale: 1.2;
+    transition: .3s ease;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--primaria);
+  color: var(--apoio6);
+  font-size: 1.1rem;
+  flex-wrap: wrap;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+.footer-content{
+  background-color: var(--primaria);
+}
+
+.footer-map, .footer-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-map iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 450px;
+  border: none;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.location-info, .store-policies, .help-section, .social-media {
+  margin-bottom: 20px;
+}
+
+.footer-address, .store-policies ul, .social-media ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-media ul li {
+  margin-bottom: 5px;
+}
+
+.social-media a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: var(--apoio4);
+  color: var(--primaria)
+}
+
+@media (max-width: 768px) {
+  .footer {
+      flex-direction: column;
+  }
+
+  .footer-map, .footer-info {
+      width: 100%;
+  }
+
+  .footer-info {
+      padding-top: 20px;
+  }
+}
+
+

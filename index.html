@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="servicos.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/servicos.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/sobre.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -28,10 +29,11 @@
             /></a>
           </li>
           <div class="main-items">
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li><a href="#">Galeria</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+      
           </div>
         </ul>
       </nav>
@@ -55,19 +57,21 @@
 
 <!--Sobre nós-->
 <div class="textura"></div>
-  <section class="about">
-    <h2 class="title-services">Quem Somos</h2>
+  <section id="sobre" class="about">
+    <h2 class="about-title">Quem Somos</h2>
     <div class="about-content">
       <div class="about-image">
         <img src="img/about/banner-nw.png" alt="Imagem de barbearia">
       </div>
       <div class="about-text">
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
+        <p class="about-p-span">Lorem ipsum dolor sit amet consectetur adipisicing elit elit.</p>
         <a href="#" class="btn-about">Fazer Agendamento</a>
       </div>    
     </div>
@@ -76,12 +80,12 @@
 
 
     <!--Equipe Nw-->
-    <div class="about-team-section">
+    <div id="equipe" class="about-team-section">
       <div class="about-width-team">
       <h1 class="about-title-team">Equipe <span>NW</span></h1>
       <h3 class="about-team-title"></h3>
       <div class="about-team-photos">
-        <div class="about-team-member">
+        <div class="team-member">
           <img src="img/about/membro1.jpeg" alt="Membro da equipe 1" class="team-photo">
           <div class="info">
             <p class="name-member">Vinicius Fraile</p>
@@ -127,7 +131,7 @@
 
 
 <!--Serviços-->
-<section class="services">
+<section id="servicos" class="services">
   <h2 class="services-title">Nossos Serviços</h2>
   <div class="services-card-section">
       
@@ -193,39 +197,37 @@
 
 
 <!--Footer-->
-    <footer>
-        <div class="footer">
-        <div class="footer-contact">
-            <h4>Nossa localização</h4>
-            <ul class="footer-address">
-                <li><i class="fa-solid fa-location-dot"></i>
-                    Rua Serra dos Aimorés, 38c<br>
-                    Itam Paulista<br>
-                    SP
-                </li>
-             </ul>
-             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.886306760673!2d-46.39806463554017!3d-23.50060426499567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce637ee780e3f1%3A0x7c208b40c0d15aea!2sR.%20Serra%20dos%20Aimor%C3%A9s%2C%2038c%20-%20Itaim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008120-080!5e0!3m2!1spt-BR!2sbr!4v1725918628781!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    <br>
-        <div class="footer-menu">
-            <h4>Navegação</h4>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </div>
-    <br>
-        <div class="footer-social-media">
-            <h4>Nos siga</h4>
-            <ul>
-                <li><a href="https://www.instagram.com/nw.salon/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-                <li><a href="#"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
-                <li><a href="#"><i class="fa-brands fa-twitter"></i> Twiiter</a></li>
-            </ul>
-        </div>
+<footer id="">
+  <div class="footer-content">
+  <div class="footer">
+      <div class="footer-info">
+          <div class="location-info">
+              <h4>Nossa localização</h4><br>
+              <p>Rua Serra dos Aimorés, 38c<br>Itam Paulista - SP</p>
+          </div>
+          <div class="help-section">
+          </div>
+          <div class="social-media">
+              <h4>Nos siga</h4><br>
+              <ul>
+                  <li><a href="https://www.instagram.com/nw.salon/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                  <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+              </ul>
+          </div>
+          
+      </div>
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.886306760673!2d-46.39806463554017!3d-23.50060426499567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce637ee780e3f1%3A0x7c208b40c0d15aea!2sR.%20Serra%20dos%20Aimor%C3%A9s%2C%2038c%20-%20Itaim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008120-080!5e0!3m2!1spt-BR!2sbr!4v1725918628781!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    </footer>
+  </div>
+ </div>
+  
+  <div class="footer-bottom">
+      <p>New Age Salon - Barbearia - CNPJ: 00.000.000/0000-00</p>
+      <p>Copyright © 2024, TODOS OS DIREITOS RESERVADOS.</p>
+  </div>
+</footer>
+
   <a href="#" class="btn-whatsapp">
     <img src="img/midias/wpp-logo.png" height="110px">
   </a>

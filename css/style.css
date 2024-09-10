@@ -1,0 +1,52 @@
+/*classes universais*/
+
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155; 
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonteTitulo);
+    margin: 0%;
+    padding: 0%;
+}
+
+.main-btn-whatsapp {
+    bottom: 30px;
+    position: fixed;
+    right: 30px;
+    z-index: 1;
+}
+
+.main-btn-whatsapp:hover {
+    scale: 1.2;
+    transition: .3s ease;
+}
+
+span {
+    color: var(--secundaria);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.textura {
+    background-image: url("img/t.svg");
+}
+
+
