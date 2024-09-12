@@ -18,7 +18,7 @@
 
   .services-agendamento {
     background-color: var(--secundaria);
-    border-radius: 5px;
+    border-radius: 26px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.54);
     color: var(--primaria);
     cursor: pointer;
@@ -40,7 +40,7 @@
   .services-card {
     background-color: var(--primaria);
     border: 5px solid var(--primaria);
-    border-radius: 10px;
+    border-radius: 26px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.54);
     height: 450px;
     overflow: hidden;
