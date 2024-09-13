@@ -25,9 +25,10 @@
 .main-list {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     list-style: none;
     max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -132,38 +133,78 @@
 }
 
 @media (max-width: 1024px) {
+    .main-img-logo {
+        height: 40px;
+    }
     .main-list a{
-        font-size: 1rem;
+        font-size: .7rem;
 }
     .main-title{
-        font-size: 3rem;
+        font-size: 2.5rem;
+        
     }
     .main-p {
-        font-size: .9rem 
+        font-size: .7rem 
     }
     .main-subtitle {
-        font-size: .86rem;
+        font-size: .7rem;
         letter-spacing: .6rem;
+        
     }
     .main{
     background-image: url("/img/main-conteudo/back2.png");
     background-size: cover;
     background-position: 0% 50%;
     }
+    
+    .main-btn {
+        border-radius: 50px;       
+        color: var(--primaria);   
+        font-family: var(--fonteTitulo); 
+        font-size: .8rem;           
+        font-weight: 700;           
+        padding: 15px 25px;        
+    }
+}
+
+@media (max-width: 768px) {
+    .main-img-logo {
+        height: 40px;
+    }
+    .main-list a{
+        font-size: .7rem;
+}
+    .main-title{
+        font-size: 2.5rem;
+        
+    }
+    .main-p {
+        font-size: .7rem 
+    }
+    .main-subtitle {
+        font-size: .7rem;
+        letter-spacing: .6rem;
+        
+    }
     .main-content{
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
-        flex-wrap: wrap;
         margin: 0;
     }
-    .main-btn{
-        border-radius: 50px;
-        color: var(--primaria);
-        font-family: var(--fonteTitulo);
-        font-size: 1rem;
-        font-weight: 700;
-        padding: 15px 25px;
+    .main{
+    background-image: url("/img/main-conteudo/back2.png");
+    background-size: cover;
+    background-position: 0% 50%;
+    }
+    
+    .main-btn {
+        border-radius: 50px;       
+        color: var(--primaria);   
+        font-family: var(--fonteTitulo); 
+        font-size: .8rem;           
+        font-weight: 700;           
+        padding: 15px 25px;        
     }
 }
