@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Barbearia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --apoio7: #20563E;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155; 
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--fonteTitulo);
+            background-color: #f4f4f4;
+            display: flex;
+            height: 100vh;
+        }
+        .header {
+            color: #fff;
+
+            text-align: center;
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-grow: 1;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: var(--primaria);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar a {
+            color: var(--apoio5);
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 10px;
+            transition: .1s;
+        }
+        .sidebar a:hover {
+            background-color: var(--apoio4);
+
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateX(10px);
+        }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+        .hover-effect {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease;
+        }
+        .card:hover .hover-effect {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="sidebar">
+            <a href="#">Dashboard</a>
+            <a href="#">Criar Administrador</a>
+            <a href="#">Ver Estatísticas</a>
+            <a href="#">Gerenciar Barbeiros</a>
+            <a href="#">Gerenciar Agendamentos</a>
+            <a href="#">Configurações</a>
+            <a href="#">Sair</a>
+        </div>
+        <div class="main-content">
+            <div class="card">
+                <div class="hover-effect"></div>
+                <h3>Criar Administrador</h3>
+                <p>Adicione novos administradores ao sistema.</p>
+            </div>
+
+            <div class="card">
+                <div class="hover-effect"></div>
+                <h3>Ver Estatísticas</h3>
+                <p>Veja as estatísticas da barbearia.</p>
+            </div>
+
+            <div class="card">
+                <div class="hover-effect"></div>
+                <h3>Gerenciar Barbeiros</h3>
+                <p>Controle os horários e informações dos barbeiros.</p>
+            </div>
+
+            <div class="card">
+                <div class="hover-effect"></div>
+                <h3>Gerenciar Agendamentos</h3>
+                <p>Acompanhe e gerencie os agendamentos.</p>
+            </div>
+
+            <div class="card">
+                <div class="hover-effect"></div>
+                <h3>Configurações</h3>
+                <p>Ajuste as configurações do sistema.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
