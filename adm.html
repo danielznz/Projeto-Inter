@@ -66,39 +66,42 @@
 
         }
         .main-content {
-            flex-grow: 1;
-            padding: 40px;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
+
         .card {
             background-color: #fff;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .card:hover {
-            transform: translateX(10px);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+
         .card h3 {
+            font-size: 20px;
             margin-bottom: 10px;
         }
-        .hover-effect {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0;
-            background-color: rgba(0, 0, 0, 0.1);
-            transition: width 0.3s ease;
-        }
-        .card:hover .hover-effect {
-            width: 100%;
+
+        .card p {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -116,37 +119,27 @@
             <a href="#">Sair</a>
         </div>
         <div class="main-content">
-            <div class="card">
-                <div class="hover-effect"></div>
-                <h3>Criar Administrador</h3>
-                <p>Adicione novos administradores ao sistema.</p>
-            </div>
-
-            <div class="card">
-                <div class="hover-effect"></div>
-                <h3>Ver Estatísticas</h3>
-                <p>Veja as estatísticas da barbearia.</p>
-            </div>
-
-            <div class="card">
-                <div class="hover-effect"></div>
-                <h3>Gerenciar Barbeiros</h3>
-                <p>Controle os horários e informações dos barbeiros.</p>
-            </div>
-
-            <div class="card">
-                <div class="hover-effect"></div>
-                <h3>Gerenciar Agendamentos</h3>
-                <p>Acompanhe e gerencie os agendamentos.</p>
-            </div>
-
-            <div class="card">
-                <div class="hover-effect"></div>
-                <h3>Configurações</h3>
-                <p>Ajuste as configurações do sistema.</p>
+            <h1>Painel Admin</h1>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Criar Administrador</h3>
+                    <p>Adicione novos administradores ao sistema.</p>
+                </div>
+                <div class="card">
+                    <h3>Ver Estatísticas</h3>
+                    <p>Veja as estatísticas da barbearia.</p>
+                </div>
+                <div class="card">
+                    <h3>Gerenciar Barbeiros</h3>
+                    <p>Controle os horários e informações dos barbeiros.</p>
+                </div>
+                <div class="card">
+                    <h3>Gerenciar Agendamentos</h3>
+                    <p>Acompanhe e gerencie os agendamentos.</p>
+                </div>
             </div>
         </div>
-    </div>
+    
 
 </body>
 </html>

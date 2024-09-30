@@ -3,80 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Tela de Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert -->
 </head>
-
-<stYle>
-:root {
-    /* cores */
-    --apoio1: #ee7919;
-    --apoio2: #ff9a48;
-    --apoio3: #FEAD6C;
-    --apoio4: #2C2C2C;
-    --apoio5: #ccc;
-    --apoio6: #f2f2f2;
-    --primaria: #1b1b1b;
-    --secundaria: #ffa155; 
-    /* fontes */
-    --fonteServices: "Big Shoulders Display", sans-serif;
-    --fonteTitulo: "Montserrat", sans-serif;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #3f3f3f;
-}
-
-.form-container {
-    background-color: var(--apoio6);
-    padding: 30px 40px;
-    border-radius: 26px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    text-align: center;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-field {
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 26px;
-    width: 100%;
-}
-
-.login-btn {
-    padding: 10px 14px;
-    width: 100%;
-    border: none;
-    background-color: var(--apoio1);
-    color: var(--apoio6);
-    font-size: 1.2rem;
-    border-radius: 26px;
-    cursor: pointer;
-}
-
-</stYle>
 <body>
-    <div class="form-container">
-        <h2 class="login-tile">Login</h2>
-        <form action="/login" class="login-form">
-            <input type="text" id="username" name="username" placeholder="UserName" class="input-field">
-            <input type="password" id="password" name="password" placeholder="Senha" class="input-field">
-            <input type="submit" value="Logar" class="login-btn">
-        </form>  
-        <br>
-        <a href=""><p>Não tem uma conta?</p></a>
+    <div class="main-login">
+        <div class="card-login">
+            <img src="img/main-conteudo/logo-nw.png" height="80px" alt="Logo da Barbearia NW Salon" class="main-img-logo" />
+            <div class="logo-title">
+                <h1>Login</h1>
+            </div>
+            <div class="textfield">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="textfield">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Senha">
+            </div>
+            <div class="textfield" id="admin-auth" style="display:none;">
+                <label for="codigo">Código de Acesso</label>
+                <input type="text" id="codigo" name="codigo" placeholder="Digite o código de administrador">
+            </div>
+            
+            <button class="btn-login" onclick="handleLogin()">Confirmar</button>
+            <div class="no-register">
+                <a href="cadastro.html">Não possui conta? Clique aqui</a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        let isAdmin = false;
+
+        function handleLogin() {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            // Verifica se é admin
+            if (email === "admin@nwsaloon" && senha === "admin123") {
+                isAdmin = true;
+                document.getElementById("admin-auth").style.display = "block";
+                Swal.fire({
+                    title: 'Admin Identificado!',
+                    text: 'Insira o código de administrador para continuar.',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            } 
+            else if (email === "usuario@comum" && senha === "senhausuario") {
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Login realizado com sucesso!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = "adm.html";
+                });
+            } 
+            else {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Email ou senha incorretos!',
+                    icon: 'error',
+                    confirmButtonText: 'Tentar novamente'
+                });
+            }
+        }
+
+        function confirmarAdmin() {
+            const codigo = document.getElementById("codigo").value;
+
+            if (isAdmin && codigo === "codigoAdmin123") {
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Bem-vindo, administrador!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = "adm.html"; 
+                });
+            } else if (isAdmin && codigo !== "codigoAdmin123") {
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Código de administrador incorreto!',
+                    icon: 'error',
+                    confirmButtonText: 'Tentar novamente'
+                });
+            }
+        }
+
+        // Modifica o comportamento do botão de login
+        document.querySelector('.btn-login').addEventListener('click', function() {
+            if (isAdmin) {
+                confirmarAdmin(); // Somente chama a função para validar o código de admin
+            } else {
+                handleLogin(); // Realiza o login inicial
+            }
+        });
+    </script>
 </body>
 </html>
