@@ -7,7 +7,7 @@
     <title>Tela de Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="main-login">
@@ -43,7 +43,6 @@
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
 
-            // Verifica se é admin
             if (email === "admin@nwsaloon" && senha === "admin123") {
                 isAdmin = true;
                 document.getElementById("admin-auth").style.display = "block";
@@ -95,13 +94,11 @@
                 });
             }
         }
-
-        // Modifica o comportamento do botão de login
         document.querySelector('.btn-login').addEventListener('click', function() {
             if (isAdmin) {
-                confirmarAdmin(); // Somente chama a função para validar o código de admin
+                confirmarAdmin();
             } else {
-                handleLogin(); // Realiza o login inicial
+                handleLogin();
             }
         });
     </script>
