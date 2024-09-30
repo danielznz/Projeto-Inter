@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Agendamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="confirmacao.css">
+</head>
+<body>
+
+    <div class="confirmacao-container">
+       <!--<div class="back">
+     <a href="agendamento.html">Editar <i class="fa-solid fa-pencil pencil-color"></i></a>
+    </div> botao de editar--> 
+        <h1>Agendamento Confirmado <i class="fa-solid fa-check check-verde"></i></h1>
+        <p id="servicoConfirmacao"></p>
+        <p id="barbeiroConfirmacao"></p>
+        <p id="dataConfirmacao"></p>
+        <p id="horarioConfirmacao"></p>
+        <br><br>
+        <button onclick="window.location.
+        href='index.html'">Voltar para a Página Inicial</button>
+        
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const servico = urlParams.get('servico');
+        const barbeiro = urlParams.get('barbeiro');
+        const data = urlParams.get('data');
+        const horario = urlParams.get('horario');
+
+
+        document.getElementById('servicoConfirmacao').textContent = `Serviço: ${servico}`;
+        document.getElementById('barbeiroConfirmacao').textContent = `Barbeiro: ${barbeiro}`;
+        document.getElementById('dataConfirmacao').textContent = `Data: ${data}`;
+        document.getElementById('horarioConfirmacao').textContent = `Horário: ${horario}`;
+    </script>
+</body>
+</html>

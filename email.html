@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de E-mail</title>
+    <link rel="stylesheet" href="email.css"> <!-- Inclua seu CSS aqui -->
+</head>
+<body>
+    <div class="email-container">
+        <h1>Por favor, insira seu E-mail</h1>
+        <form id="emailForm">
+            <input type="email" id="email" name="email" placeholder="Seu E-mail" required>
+            <button type="submit">OK</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("emailForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            const email = document.getElementById("email").value;
+
+            const params = new URLSearchParams(window.location.search);
+            const servico = params.get('servico');
+            const barbeiro = params.get('barbeiro');
+            const data = params.get('data');
+            const horario = params.get('horario');
+
+            window.location.href = `confirmacao.html?email=${encodeURIComponent(email)}&servico=${encodeURIComponent(servico)}&barbeiro=${encodeURIComponent(barbeiro)}&data=${encodeURIComponent(data)}&horario=${encodeURIComponent(horario)}`;
+        });
+    </script>
+   
+</body>
+</html>

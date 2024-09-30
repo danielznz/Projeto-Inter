@@ -215,29 +215,28 @@ h3 {
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
         <div class="form-container">
-            <form action="/agendar" method="POST">
+            <form id="formAgendamento">
                 <div class="form-section">
                     <label for="service">Escolha o Serviço:</label>
                     <select id="service" name="service" required>
-                        <option value="corte">Corte - R$ 30,00</option>
-                        <option value="barba">Barba - R$ 20,00</option>
-                        <option value="sombrancelha">Sobrancelha - R$ 15,00</option>
-                        <option value="corte-barba">Corte + Barba - R$ 45,00</option>
-                        <option value="corte-barba-sombrancelha">Corte + Barba + Sobrancelha - R$ 55,00</option>
+                        <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
+                        <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
+                        <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
+                        <option value="Corte + Barba - R$ 45,00">Corte + Barba - R$ 45,00</option>
+                        <option value="Corte + Barba + Sobrancelha - R$ 55,00">Corte + Barba + Sobrancelha - R$ 55,00</option>
                     </select>
                 </div>
         
                 <div class="form-section">
                     <label for="barber">Escolha o Barbeiro:</label>
                     <select id="barber" name="barber">
-                        <option value="sem-preferencia">Sem preferência</option>
-                        <option value="barbeiro-1">Vinicius Fraile</option>
-                        <option value="barbeiro-2">Danylo Vieira</option>
-                        <option value="barbeiro-3">Igor Góes</option>
-                        <option value="barbeiro-4">Matheus Barbosa</option>
-                        <option value="barbeiro-5">Diogenes Henrique</option>
+                        <option value="Sem preferência">Sem preferência</option>
+                        <option value="Vinicius Fraile">Vinicius Fraile</option>
+                        <option value="Danylo Vieira">Danylo Vieira</option>
+                        <option value="Igor Góes">Igor Góes</option>
+                        <option value="Matheus Barbosa">Matheus Barbosa</option>
+                        <option value="Diogenes Henrique">Diogenes Henrique</option>
                     </select>
                 </div>
         
@@ -254,6 +253,22 @@ h3 {
                 <button type="submit" class="btn-agendar">Agendar</button>
             </form>
         </div>
+       
+    <script>
+        document.getElementById('formAgendamento').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const servico = document.getElementById('service').value;
+            const barbeiro = document.getElementById('barber').value;
+            const data = document.getElementById('date').value;
+            const horario = document.getElementById('time').value;
+
+            if (servico && barbeiro && data && horario) {
+                window.location.href = `email.html?servico=${encodeURIComponent(servico)}&barbeiro=${encodeURIComponent(barbeiro)}&data=${encodeURIComponent(data)}&horario=${encodeURIComponent(horario)}`;
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        });
+    </script>
         </div>
 
         <div>

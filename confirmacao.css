@@ -1,0 +1,92 @@
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --apoio7: #20563E;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155; 
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+}
+
+
+
+body {
+    font-family: var(--fonteTitulo);
+    background-image: url(/back2.svg);
+    color: var(--apoio4);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/**
+.back {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+}
+
+.back a {
+    background-color: var(--apoio7);
+    color: white;
+    padding: 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: var(--fonteTitulo);
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back a:hover {
+    background-color: var(--apoio7);
+    transform: translateY(-2px);
+}
+*botao de editar*/
+
+.confirmacao-container {
+    background-color: white;
+    position: relative;
+    padding: 50px;
+    border-radius: 26px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmacao-container h1 {
+    font-family: var(--fonteTitulo);
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.confirmacao-container p {
+    font-family: var(--fonteTitulo);
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.confirmacao-container button {
+    background-color: var(--apoio1);
+    font-family: var(--fonteTitulo);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 26px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.confirmacao-container button:hover {
+    background-color: var(--apoio2);
+}
+
+.check-verde{
+    color: #4CAF50;
+}
