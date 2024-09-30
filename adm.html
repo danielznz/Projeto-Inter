@@ -29,11 +29,20 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .header{
+            background-color: #20563E;
+            padding: 15px;
+        }
         body {
             font-family: var(--fonteTitulo);
             background-color: #f4f4f4;
+            overflow: hidden;
+     
+        }
+        .flex{
             display: flex;
             height: 100vh;
+         
         }
         .header {
             color: #fff;
@@ -55,7 +64,7 @@
         .sidebar a {
             color: var(--apoio5);
             text-decoration: none;
-            margin-bottom: 15px;
+            margin-top: 25px;
             font-size: 1rem;
             transition: color 0.3s;
             padding: 10px;
@@ -65,29 +74,39 @@
             background-color: var(--apoio4);
 
         }
+        .menu-img{
+            margin-right: .3rem;
+        }
         .main-content {
             flex: 1;
             padding: 20px;
         }
 
         .main-content h1 {
-            font-size: 24px;
+            font-size: 2.5rem;
+            font-weight: 500;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left;
+            margin-left: .5rem;
         }
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 26px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e0e0e0;
         }
 
         .card {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 26px;
+            border: 1px solid #e0e0e0;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0;
         }
 
         .card:hover {
@@ -98,47 +117,66 @@
         .card h3 {
             font-size: 20px;
             margin-bottom: 10px;
+            background-color: #ececec;
+            padding: 10px 5px;
+            border-radius: 26px 26px 0px 0px ;
         }
 
         .card p {
             font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .p-header{
+            font-size: 1rem;
+            padding: 5px;
+            text-align: left;
+        }
+        .vetor-card{
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-
-
+    <div class="header">
+      <p class="p-header">Painel Administrativo - NW SALOON</p>
+    </div>
+    <div class="flex">
     <div class="container">
         <div class="sidebar">
             <a href="#">Dashboard</a>
-            <a href="#">Criar Administrador</a>
-            <a href="#">Ver Estatísticas</a>
-            <a href="#">Gerenciar Barbeiros</a>
-            <a href="#">Gerenciar Agendamentos</a>
-            <a href="#">Configurações</a>
-            <a href="#">Sair</a>
+            <a href="#"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Administrador</a>
+            <a href="#"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
+            <a href="#"><img src="img/menu/menu-gerenciar.png" class="menu-img" >Gerenciar Barbeiros</a>
+            <a href="#"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
+            <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
-            <h1>Painel Admin</h1>
+            <h1>Painel Administrativo</h1>
             <div class="grid-container">
                 <div class="card">
                     <h3>Criar Administrador</h3>
-                    <p>Adicione novos administradores ao sistema.</p>
-                </div>
-                <div class="card">
-                    <h3>Ver Estatísticas</h3>
-                    <p>Veja as estatísticas da barbearia.</p>
+                    <p>Adicione novos administradores ao sistema</p>
+                    <img src="/img/adm.png" class="vetor-card" height="100px">
                 </div>
                 <div class="card">
                     <h3>Gerenciar Barbeiros</h3>
-                    <p>Controle os horários e informações dos barbeiros.</p>
+                    <p>Controle os horários e informações dos barbeiros</p>
+                    <img src="/img/gerencia.png" class="vetor-card"  height="100px">
                 </div>
                 <div class="card">
                     <h3>Gerenciar Agendamentos</h3>
-                    <p>Acompanhe e gerencie os agendamentos.</p>
+                    <p>Acompanhe e gerencie os agendamentos</p>
+                    <img src="/img/calendario.png"class="vetor-card"  height="100px">
                 </div>
+                <div class="card">
+                    <h3>Ver Estatísticas</h3>
+                    <p>Veja as estatísticas da barbearia</p>
+                    <img src="/img/grafico.png"class="vetor-card"  height="100px">
+                </div>
+                
             </div>
         </div>
+    </div>
     
 
 </body>
