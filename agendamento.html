@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Barbearia</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --apoio7: #20563E;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155; 
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+}
+
+
+body {
+    font-family: var(--fonteTitulo);
+    background-color: var(--apoio6);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primaria);
+    color: var(--apoio6);
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-text h1 {
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh; /* Faz com que a altura mínima seja 100% da altura da viewport */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+
+.carousel {
+    width: 500px;
+    display: flex;
+}
+
+.form-container {
+    width: 35%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 26px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+select, input[type="date"], input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    font-size: 16px;
+}
+
+button.btn-agendar {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 26px;
+    background-color: var(--apoio1);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.btn-agendar:hover {
+    background-color: var(--apoio2);
+}
+
+.carousel-item img {
+    border-radius: 8px;
+    width: 600px;
+    height: 500px;
+    object-fit: cover;
+}
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/main-conteudo/logo-nw.png" alt="Logo da Barbearia">
+            <p>New Age Salon - Rua Serra dos Aimorés, 38c, Salão Térreo, 08120-080, São Paulo</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Carousel -->
+        <div id="serviceCarousel" class="carousel slide col-md-7" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="carrossel1.jpg" class="d-block w-100" alt="Serviço 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrossel1.jpg" class="d-block w-100" alt="Serviço 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="carrossel1.jpg" class="d-block w-100" alt="Serviço 1">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="form-container">
+            <form action="/agendar" method="POST">
+                <div class="form-section">
+                    <label for="service">Escolha o Serviço:</label>
+                    <select id="service" name="service" required>
+                        <option value="corte">Corte</option>
+                        <option value="barba">Barba</option>
+                        <option value="sombrancelha">Sombrancelha</option>
+                        <option value="corte-barba">Corte + Barba</option>
+                        <option value="corte-barba-sombrancelha">Corte + Barba + Sobrancelha</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label for="barber">Escolha o Barbeiro:</label>
+                    <select id="barber" name="barber">
+                        <option value="sem-preferencia">Sem preferência</option>
+                        <option value="barbeiro-1">Vinicius Fraile</option>
+                        <option value="barbeiro-2">Danylo Vieira</option>
+                        <option value="barbeiro-3">Igor Góes</option>
+                        <option value="barbeiro-4">Matheus Barbosa</option>
+                        <option value="barbeiro-5">Diogenes Henrique</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label for="date">Escolha a Data:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-section">
+                    <label for="time">Escolha o Horário:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+
+                <button type="submit" class="btn-agendar">Agendar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
