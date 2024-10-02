@@ -13,7 +13,7 @@
 }
 
 .main {
-    background-image: url("/img/main-conteudo/back2.png");
+    background-image: url("img/main-conteudo/back2.png");
     height: 100vh;
 }
 
@@ -108,7 +108,7 @@
         margin-left: 4rem;
     }
     .main{
-    background-image: url("/img/main-conteudo/back2.png");
+    background-image: url("img/main-conteudo/back2.png");
     background-size: cover;
     }
 }
@@ -152,7 +152,7 @@
         
     }
     .main{
-    background-image: url("/img/main-conteudo/back2.png");
+    background-image: url("img/main-conteudo/back2.png");
     background-size: cover;
     background-position: 0% 50%;
     }
@@ -194,7 +194,7 @@
         margin: 0;
     }
     .main{
-    background-image: url("/img/main-conteudo/back2.png");
+    background-image: url("img/main-conteudo/back2.png");
     background-size: cover;
     background-position: 0% 50%;
     }
