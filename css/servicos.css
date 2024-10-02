@@ -58,6 +58,7 @@
   .services-link {
     background-color: var(--primaria);
     border-radius: 50px;
+    text-decoration: none;
     color: var(--apoio6);
     cursor: pointer;
     font-size: 1.2rem;
