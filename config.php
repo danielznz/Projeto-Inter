@@ -4,7 +4,7 @@
     $dbPassword = '';
     $daName = 'newage';
 
-    $conexao = new mysqli($dbHost,$dbUsarname,$dbPassword,$daName = 'newage');
+    $conexao = new mysqli($dbHost,$dbUsarname,$dbPassword,$dbName = 'newage');
 
     // if($conexao->connect_errno)
     // {
