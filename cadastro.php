@@ -1,3 +1,26 @@
+<?php
+    if(isset($_POST['submit']))
+    {
+        // print_r($_POST['nome']);
+        // print_r($_POST['<br>']);
+        // print_r($_POST['telefone']);
+        // print_r($_POST['<br>']);
+        // print_r($_POST['email']);
+        // print_r($_POST['<br>']);
+        // print_r($_POST['senha']);
+
+        include_once('config.php');
+
+        $nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome, telefone, email, senha) 
+        VALUES('$nome','$telefone','$email','$senha')");
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,18 +34,19 @@
 </head>
 <body>
     <div class="main-login">
+        <form action="cadastro.php" method="POST">
             <div class="card-login">
                 <img src="img/main-conteudo/logo-nw.png" height="80px" alt="Logo da Barbearia NW Salon" class="main-img-logo" />
                 <div class="logo-title">
                 <h1>Cadastro</h1>
             </div>
             <div class="textfield">
-                <label for="email">Nome Completo</label>
-                <input type="email" name="email" placeholder="Nome">
+                <label for="nome">Nome Completo</label>
+                <input type="text" name="nome" placeholder="Nome">
             </div>
             <div class="textfield">
-                <label for="email">Telefone</label>
-                <input type="email" name="email" placeholder="Numero de telefone">
+                <label for="telefone">Telefone</label>
+                <input type="number" name="telefone" placeholder="Numero de telefone">
             </div>
                 <div class="textfield">
                     <label for="email">Email</label>
@@ -32,8 +56,9 @@
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" placeholder="Senha">
                 </div>
-                <button class="btn-login">Confirmar</button>
+                <input type="submit" class="btn-login" name="submit" id="submit">
             </div>
+            <form>
     </div>
 </body>
 </html>

@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="main-login">
+        <form action="testeLogin.php" method="POST">
         <div class="card-login">
             <img src="img/main-conteudo/logo-nw.png" height="80px" alt="Logo da Barbearia NW Salon" class="main-img-logo" />
             <div class="logo-title">
@@ -28,15 +29,15 @@
                 <label for="codigo">Código de Acesso</label>
                 <input type="text" id="codigo" name="codigo" placeholder="Digite o código de administrador">
             </div>
-            
-            <button class="btn-login" onclick="handleLogin()">Confirmar</button>
+            <input class="btn-login" type="submit" name="submit" value="Enviar">
             <div class="no-register">
-                <a href="cadastro.html">Não possui conta? Clique aqui</a>
+                <a href="cadastro.php">Não possui conta? Clique aqui</a>
             </div>
         </div>
+        </form>
     </div>
 
-    <script>
+    <!-- <script>
         let isAdmin = false;
 
         function handleLogin() {
@@ -101,6 +102,6 @@
                 handleLogin();
             }
         });
-    </script>
+    </script> -->
 </body>
 </html>

@@ -6,10 +6,10 @@
 
     $conexao = new mysqli($dbHost,$dbUsarname,$dbPassword,$daName = 'newage');
 
-    if($conexao->connect_errno)
-    {
-        echo "Erro";
-    } else{
-        echo "Conexão";
-    }
+    // if($conexao->connect_errno)
+    // {
+    //     echo "Erro";
+    // } else{
+    //     echo "Conexão";
+    // }
 ?>
