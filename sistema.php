@@ -1,42 +1,58 @@
 <?php
+session_start(); // Inicia a sessão para acessar as variáveis de sessão
+
 if (isset($_POST['submit-agendamento'])) {
     include_once('config.php');
+
+    // Pega o ID do usuário logado da sessão
+    $usuario_id = $_SESSION['usuario_id'];
 
     $servico = $_POST['servico'];
     $barbeiro = $_POST['barbeiro'];
     $data = $_POST['data'];
     $horario = $_POST['horario'];
 
-    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario) VALUES('$servico','$barbeiro','$data','$horario')");
+    // Inclui o ID do usuário na inserção do agendamento
+    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario, usuario_id) 
+    VALUES('$servico','$barbeiro','$data','$horario', '$usuario_id')");
 
     if ($result) {
-        echo "
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Agendamento realizado!',
-                    text: 'Seu agendamento foi registrado com sucesso.',
-                    confirmButtonText: 'OK'
-                });
-            });
-        </script>";
+        // Redireciona para a mesma página ou para uma página de sucesso
+        header("Location: sistema.php?success=true");
+        exit();
     } else {
+        // Caso de erro
         echo "
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Erro no agendamento',
-                    text: 'Ocorreu um erro ao tentar registrar o agendamento: " . mysqli_error($conexao) . "',
+                    text: 'Ocorreu um erro ao tentar registrar o agendamento.',
                     confirmButtonText: 'OK'
                 });
             });
         </script>";
-    } 
+    }
+    
+    mysqli_close($conexao);
+}
+
+// Exibe mensagem de sucesso se o agendamento foi realizado com sucesso
+if (isset($_GET['success']) && $_GET['success'] == 'true') {
+    echo "
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Agendamento realizado!',
+                text: 'Seu agendamento foi registrado com sucesso.',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -221,6 +237,9 @@ h3 {
         <div class="logo">
             <h1 class="title-session"><img src="img/main-conteudo/logo-nw.png" alt="Logo da Barbearia"> Agendamento New Age</h1>
         </div>
+        <div class="ver-agendamentos">
+        <a href="ver_agendamentos.php" class="btn btn-primary">Ver meus agendamentos</a>
+        </div>
     </header>
 
     <div>
@@ -231,19 +250,19 @@ h3 {
         <div id="serviceCarousel" class="carousel slide col-md-7" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/servicos-card/img-4.png" class="d-block w-100" alt="Serviço 1">
+                    <img src="img/cortes/corte1.jpeg"  class="d-block w-100" alt="Serviço 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/servicos-card/img-5.png" class="d-block w-100" alt="Serviço 1">
+                    <img src="img/cortes/corte2.jpeg"  class="d-block w-100" alt="Serviço 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/servicos-card/img-1.png" class="d-block w-100" alt="Serviço 1">
+                    <img src="img/cortes/corte3.jpeg"  class="d-block w-100" alt="Serviço 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/servicos-card/img-3.png" class="d-block w-100" alt="Serviço 1">
+                    <img src="img/cortes/corte4.jpeg" class="d-block w-100" alt="Serviço 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/servicos-card/img-2.png" class="d-block w-100" alt="Serviço 1">
+                    <img src="img/cortes/corte5.jpeg"  class="d-block w-100" alt="Serviço 1">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev">
@@ -323,10 +342,7 @@ h3 {
                 <p>Melhor barbearia de todas, 
                     sem explicação ❤️</p>
             </div>
-
-            
         </div>
-
 <footer id="">
     <div class="footer-content">
     <div class="footer">
@@ -360,3 +376,6 @@ h3 {
 </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
+
+
+
