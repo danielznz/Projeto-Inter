@@ -1,3 +1,43 @@
+<?php
+if (isset($_POST['submit-agendamento'])) {
+    include_once('config.php');
+
+    $servico = $_POST['servico'];
+    $barbeiro = $_POST['barbeiro'];
+    $data = $_POST['data'];
+    $horario = $_POST['horario'];
+
+    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario) VALUES('$servico','$barbeiro','$data','$horario')");
+
+    if ($result) {
+        echo "
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Agendamento realizado!',
+                    text: 'Seu agendamento foi registrado com sucesso.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
+    } else {
+        echo "
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro no agendamento',
+                    text: 'Ocorreu um erro ao tentar registrar o agendamento: " . mysqli_error($conexao) . "',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
+    } 
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -221,10 +261,10 @@ h3 {
             </button>
         </div>
         <div class="form-container">
-            <form id="formAgendamento">
+            <form action="agendamento.php" method="POST">
                 <div class="form-section">
                     <label for="service">Escolha o Serviço:</label>
-                    <select id="service" name="service" required>
+                    <select id="servico" name="servico" required>
                         <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
                         <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
                         <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
@@ -235,7 +275,7 @@ h3 {
         
                 <div class="form-section">
                     <label for="barber">Escolha o Barbeiro:</label>
-                    <select id="barber" name="barber">
+                    <select id="barbeiro" name="barbeiro">
                         <option value="Sem preferência">Sem preferência</option>
                         <option value="Vinicius Fraile">Vinicius Fraile</option>
                         <option value="Danylo Vieira">Danylo Vieira</option>
@@ -247,15 +287,15 @@ h3 {
         
                 <div class="form-section">
                     <label for="date">Escolha a Data:</label>
-                    <input type="date" id="date" name="date" required>
+                    <input type="date" id="data" name="data" required>
                 </div>
         
                 <div class="form-section">
                     <label for="time">Escolha o Horário:</label>
-                    <input type="time" id="time" name="time" required>
+                    <input type="time" id="horario" name="horario" required>
                 </div>
         
-                <button type="submit" class="btn-agendar">Agendar</button>
+                <input type="submit" class="btn-agendar" name="submit" id="submit">
             </form>
         </div>
        

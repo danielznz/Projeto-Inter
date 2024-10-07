@@ -19,12 +19,13 @@
     --fonteTitulo: "Montserrat", sans-serif;
 }
 
-body {
+body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
-    background-image: url("../img/about/banner-team.png");
+    background-color: #262626;
     font-family: var(--fonteTitulo);
 }
 
@@ -99,3 +100,4 @@ body {
     text-align: center;
     margin-top: 2rem;
 }
+

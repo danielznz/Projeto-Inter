@@ -1,16 +1,41 @@
 <?php
-session_start();
-    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true))
-    {
-        unset($_SESSION['email']);
-        unset($_SESSION['senha']);
-        header('Location: login.php');
-    }
-    $logado = $_SESSION['email'];
+if (isset($_POST['submit-agendamento'])) {
+    include_once('config.php');
+
+    $servico = $_POST['servico'];
+    $barbeiro = $_POST['barbeiro'];
+    $data = $_POST['data'];
+    $horario = $_POST['horario'];
+
+    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario) VALUES('$servico','$barbeiro','$data','$horario')");
+
+    if ($result) {
+        echo "
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Agendamento realizado!',
+                    text: 'Seu agendamento foi registrado com sucesso.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
+    } else {
+        echo "
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro no agendamento',
+                    text: 'Ocorreu um erro ao tentar registrar o agendamento: " . mysqli_error($conexao) . "',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
+    } 
+}
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -119,7 +144,7 @@ select, input[type="date"], input[type="time"] {
     font-size: 16px;
 }
 
-button.btn-agendar {
+input.btn-agendar {
     width: 100%;
     padding: 20px;
     border: none;
@@ -130,7 +155,7 @@ button.btn-agendar {
     cursor: pointer;
 }
 
-button.btn-agendar:hover {
+input.btn-agendar:hover {
     background-color: var(--apoio2);
 }
 
@@ -231,10 +256,10 @@ h3 {
             </button>
         </div>
         <div class="form-container">
-            <form id="formAgendamento">
+            <form action="sistema.php" method="POST">
                 <div class="form-section">
                     <label for="service">Escolha o Serviço:</label>
-                    <select id="service" name="service" required>
+                    <select id="servico" name="servico" required>
                         <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
                         <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
                         <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
@@ -245,7 +270,7 @@ h3 {
         
                 <div class="form-section">
                     <label for="barber">Escolha o Barbeiro:</label>
-                    <select id="barber" name="barber">
+                    <select id="barbeiro" name="barbeiro">
                         <option value="Sem preferência">Sem preferência</option>
                         <option value="Vinicius Fraile">Vinicius Fraile</option>
                         <option value="Danylo Vieira">Danylo Vieira</option>
@@ -257,33 +282,17 @@ h3 {
         
                 <div class="form-section">
                     <label for="date">Escolha a Data:</label>
-                    <input type="date" id="date" name="date" required>
+                    <input type="date" id="data" name="data" required>
                 </div>
         
                 <div class="form-section">
                     <label for="time">Escolha o Horário:</label>
-                    <input type="time" id="time" name="time" required>
+                    <input type="time" id="horario" name="horario" required>
                 </div>
-        
-                <button type="submit" class="btn-agendar">Agendar</button>
+                <input type="submit" class="btn-agendar" name="submit-agendamento" id="submit-agendamento">
             </form>
         </div>
-       
-    <script>
-        document.getElementById('formAgendamento').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            const servico = document.getElementById('service').value;
-            const barbeiro = document.getElementById('barber').value;
-            const data = document.getElementById('date').value;
-            const horario = document.getElementById('time').value;
 
-            if (servico && barbeiro && data && horario) {
-                window.location.href = `email.html?servico=${encodeURIComponent(servico)}&barbeiro=${encodeURIComponent(barbeiro)}&data=${encodeURIComponent(data)}&horario=${encodeURIComponent(horario)}`;
-            } else {
-                alert("Por favor, preencha todos os campos.");
-            }
-        });
-    </script>
         </div>
 
         <div>
@@ -292,7 +301,7 @@ h3 {
 
         <div class="testimonials">
             <div class="testimonial-card">
-                <img src="img/avaliacoes/user2.png"" alt="" class="profile-pic">
+                <img src="img/avaliacoes/user2.png" alt="" class="profile-pic">
                 <h3>John Nero</h3>
                 <div class="stars">★★★★★</div>
                 <p>Corto com eles desde a inauguração e 
