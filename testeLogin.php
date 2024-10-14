@@ -25,7 +25,7 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
         if ($usuario['role'] === 'super_admin' || $usuario['role'] === 'admin') {
             // Se for admin, redireciona para o painel de administração
             $_SESSION['role'] = $usuario['role']; // Armazena o papel na sessão
-            header('Location: admin_dashboard.php');
+            header('Location: adm.html');
         } else {
             // Se for usuário comum, redireciona para o sistema
             header('Location: sistema.php');
