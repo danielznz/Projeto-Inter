@@ -134,6 +134,11 @@
         .vetor-card{
             margin: 10px;
         }
+
+.card-link{
+    text-decoration: none;
+    color: var(--primaria);
+}
     </style>
 </head>
 <body>
@@ -147,32 +152,40 @@
             <a href="adm_create.php"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Administrador</a>
             <a href="#"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
             <a href="#"><img src="img/menu/menu-gerenciar.png" class="menu-img" >Gerenciar Barbeiros</a>
-            <a href="#"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
+            <a href="gerenciar_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
             <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
             <h1>Painel Administrativo</h1>
             <div class="grid-container">
+                <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Criar Administrador</h3>
                     <p>Adicione novos administradores ao sistema</p>
                     <img src="/img/adm.png" class="vetor-card" height="100px">
                 </div>
+                </a>
+                <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Barbeiros</h3>
                     <p>Controle os horários e informações dos barbeiros</p>
                     <img src="/img/gerencia.png" class="vetor-card"  height="100px">
                 </div>
+                </a>
+                <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Agendamentos</h3>
                     <p>Acompanhe e gerencie os agendamentos</p>
                     <img src="/img/calendario.png"class="vetor-card"  height="100px">
                 </div>
+                </a>
+                <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Ver Estatísticas</h3>
                     <p>Veja as estatísticas da barbearia</p>
                     <img src="/img/grafico.png"class="vetor-card"  height="100px">
                 </div>
+                </a>
             </div>
         </div>
     </div>

@@ -1,59 +1,3 @@
-<?php
-session_start(); // Inicia a sessão para acessar as variáveis de sessão
-
-if (isset($_POST['submit-agendamento'])) {
-    include_once('config.php');
-
-    // Pega o ID do usuário logado da sessão
-    $usuario_id = $_SESSION['usuario_id'];
-
-    $servico = $_POST['servico'];
-    $barbeiro = $_POST['barbeiro'];
-    $data = $_POST['data'];
-    $horario = $_POST['horario'];
-
-    // Inclui o ID do usuário na inserção do agendamento
-    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario, usuario_id) 
-    VALUES('$servico','$barbeiro','$data','$horario', '$usuario_id')");
-
-    if ($result) {
-        // Redireciona para a mesma página ou para uma página de sucesso
-        header("Location: sistema.php?success=true");
-        exit();
-    } else {
-        // Caso de erro
-        echo "
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erro no agendamento',
-                    text: 'Ocorreu um erro ao tentar registrar o agendamento.',
-                    confirmButtonText: 'OK'
-                });
-            });
-        </script>";
-    }
-    
-    mysqli_close($conexao);
-}
-
-// Exibe mensagem de sucesso se o agendamento foi realizado com sucesso
-if (isset($_GET['success']) && $_GET['success'] == 'true') {
-    echo "
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Agendamento realizado!',
-                text: 'Seu agendamento foi registrado com sucesso.',
-                confirmButtonText: 'OK'
-            });
-        });
-    </script>";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -275,43 +219,46 @@ h3 {
             </button>
         </div>
         <div class="form-container">
-            <form action="sistema.php" method="POST">
-                <div class="form-section">
-                    <label for="service">Escolha o Serviço:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
-                        <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
-                        <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
-                        <option value="Corte + Barba - R$ 45,00">Corte + Barba - R$ 45,00</option>
-                        <option value="Corte + Barba + Sobrancelha - R$ 55,00">Corte + Barba + Sobrancelha - R$ 55,00</option>
-                    </select>
-                </div>
-        
-                <div class="form-section">
-                    <label for="barber">Escolha o Barbeiro:</label>
-                    <select id="barbeiro" name="barbeiro">
-                        <option value="Sem preferência">Sem preferência</option>
-                        <option value="Vinicius Fraile">Vinicius Fraile</option>
-                        <option value="Danylo Vieira">Danylo Vieira</option>
-                        <option value="Igor Góes">Igor Góes</option>
-                        <option value="Matheus Barbosa">Matheus Barbosa</option>
-                        <option value="Diogenes Henrique">Diogenes Henrique</option>
-                    </select>
-                </div>
-        
-                <div class="form-section">
-                    <label for="date">Escolha a Data:</label>
-                    <input type="date" id="data" name="data" required>
-                </div>
-        
-                <div class="form-section">
-                    <label for="time">Escolha o Horário:</label>
-                    <input type="time" id="horario" name="horario" required>
-                </div>
-                <input type="submit" class="btn-agendar" name="submit-agendamento" id="submit-agendamento">
-            </form>
-        </div>
+        <form action="sistema.php" method="POST">
+    <div class="form-section">
+        <label for="servico">Escolha o Serviço:</label>
+        <select id="servico" name="servico" required>
+            <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
+            <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
+            <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
+            <option value="Corte + Barba - R$ 45,00">Corte + Barba - R$ 45,00</option>
+            <option value="Corte + Barba + Sobrancelha - R$ 55,00">Corte + Barba + Sobrancelha - R$ 55,00</option>
+        </select>
+    </div>
 
+    <div class="form-section">
+        <label for="barbeiro">Escolha o Barbeiro:</label>
+        <select id="barbeiro" name="barbeiro" required>
+            <option value="">Selecione um barbeiro</option>
+            <option value="23">Matheus Barbosa</option>
+            <option value="1">Vinicius Fraile</option>
+            <option value="2">Danylo Vieira</option>
+            <option value="3">Igor Góes</option>
+            <option value="5">Diogenes Henrique</option>
+        </select>
+    </div>
+
+    <div class="form-section">
+        <label for="data">Escolha a Data:</label>
+        <input type="date" id="data" name="data" required>
+    </div>
+
+    <div class="form-section">
+        <label for="horario">Escolha o Horário:</label>
+        <select id="horario" name="horario" required>
+            <option value="">Selecione um horário</option>
+        </select>
+    </div>
+
+    <input type="submit" class="btn-agendar" name="submit-agendamento" id="submit-agendamento" value="Enviar">
+</form>
+
+        </div>
         </div>
 
         <div>
@@ -377,5 +324,39 @@ h3 {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
 
+<script>
+document.getElementById('barbeiro').addEventListener('change', buscarHorarios);
+document.getElementById('data').addEventListener('change', buscarHorarios);
 
+function buscarHorarios() {
+    var barbeiro = document.getElementById('barbeiro').value;
+    var data = document.getElementById('data').value;
+
+    // Garantir que barbeiro e data estão preenchidos antes de enviar a requisição
+    if (barbeiro && data) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'buscar_horarios.php?barbeiro_id=' + barbeiro + '&data=' + data, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var horarios = JSON.parse(xhr.responseText);
+
+                var selectHorario = document.getElementById('horario');
+                selectHorario.innerHTML = '<option value="">Selecione um horário</option>';
+
+                if (horarios.length > 0) {
+                    horarios.forEach(function(horario) {
+                        var option = document.createElement('option');
+                        option.value = horario;
+                        option.text = horario;
+                        selectHorario.appendChild(option);
+                    });
+                } else {
+                    selectHorario.innerHTML = '<option value="">Sem horários disponíveis</option>';
+                }
+            }
+        };
+        xhr.send();
+    }
+}
+</script>
 

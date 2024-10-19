@@ -21,11 +21,15 @@ if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']
         $_SESSION['usuario_id'] = $usuario['id']; // ID do usuário logado
         $_SESSION['email'] = $email; // Email do usuário
 
-        // Verifica o papel do usuário (admin ou usuário comum)
-        if ($usuario['role'] === 'super_admin' || $usuario['role'] === 'admin') {
-            // Se for admin, redireciona para o painel de administração
+        // Verifica o papel do usuário (super_admin) para acesso ao painel de administração
+        if ($usuario['role'] === 'super_admin') {
+            // Armazena informações do administrador na sessão
             $_SESSION['role'] = $usuario['role']; // Armazena o papel na sessão
-            header('Location: adm.html');
+            $_SESSION['nome'] = $usuario['nome']; // Nome do barbeiro
+            $_SESSION['telefone'] = $usuario['telefone']; // Telefone do barbeiro
+
+            // Redireciona para a página de administração
+            header('Location: adm.php');
         } else {
             // Se for usuário comum, redireciona para o sistema
             header('Location: sistema.php');
