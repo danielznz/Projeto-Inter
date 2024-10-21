@@ -53,6 +53,7 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Agendamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
     function adicionarHorario() {
         var container = document.getElementById('horarios-container');
@@ -73,6 +74,206 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
     }
     </script>
     <style>
+       /* Estilos Gerais */
+body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url(img/back2.svg);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 26px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="submit"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="date"]:focus,
+input[type="time"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+.back a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;;
+    border-radius: 26px;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back a:hover {
+    background-color:#2980b9;
+    color: white;
+}
+
+.back a::before {
+    content: "\f0a8"; 
+    font-weight: 900;
+    margin-right: 10px; 
+}
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+button[type="button"] {
+    background-color: #20563E;
+    color: #ffff;
+    padding: 10px 20px;
+    border-radius: 26px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 48%; 
+}
+
+button[type="button"]:hover {
+    background-color: #2980b9;
+}
+
+button {
+    background-color: #20563E;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#horarios-container input[type="time"] {
+    margin-bottom: 10px;
+    width: calc(104% - 22px);
+}
+
+#horarios-container br {
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+
+}
+
+/* Modal */
+#modal-editar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#modal-content h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+#modal-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#modal-content li {
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#modal-content a {
+    text-decoration: none;
+    color: #e74c3c;
+    margin-left: 10px;
+}
+
+#modal-content button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#modal-content button:hover {
+    background-color: #2980b9;
+}
+
+
+
         /* Estilo básico para o modal */
         #modal-editar {
             display: none;
@@ -94,6 +295,9 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
     </style>
 </head>
 <body>
+<div class="back">
+    <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
+</div>
     <h2>Gerenciar Disponibilidade</h2>
     <form action="gerenciar_agendamentos.php" method="post">
         <label for="data">Selecione os dias disponíveis:</label><br>
@@ -103,13 +307,16 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
         <div id="horarios-container">
             <input type="time" name="horarios[]" required><br>
         </div>
-        <button type="button" onclick="adicionarHorario()">Adicionar Horário</button><br><br>
-
+        <div class="button-container">
+        <button type="button" onclick="adicionarHorario()">Adicionar Horário</button>
+        <button type="button" onclick="abrirModal()">Ver Horários Cadastrados</button>
+        <br><br>
+        </div>
         <input type="submit" name="submit" value="Salvar Disponibilidade">
+        <br><br>
     </form>
 
-    <!-- Botão para abrir o modal -->
-    <button type="button" onclick="abrirModal()">Ver Horários Cadastrados</button>
+
 
     <!-- Modal para editar/excluir horários -->
     <div id="modal-editar">

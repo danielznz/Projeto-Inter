@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Barbearia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
@@ -46,7 +47,6 @@
         }
         .header {
             color: #fff;
-
             text-align: center;
             width: 100%;
         }
@@ -162,28 +162,28 @@
                 <div class="card">
                     <h3>Criar Administrador</h3>
                     <p>Adicione novos administradores ao sistema</p>
-                    <img src="/img/adm.png" class="vetor-card" height="100px">
+                    <i class="fa-solid fa-user-tie" style="font-size: 30px;"></i>
                 </div>
                 </a>
                 <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Barbeiros</h3>
                     <p>Controle os horários e informações dos barbeiros</p>
-                    <img src="/img/gerencia.png" class="vetor-card"  height="100px">
+                    <i class="fa-solid fa-list-check" style="font-size: 30px;"></i>
                 </div>
                 </a>
                 <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Agendamentos</h3>
                     <p>Acompanhe e gerencie os agendamentos</p>
-                    <img src="/img/calendario.png"class="vetor-card"  height="100px">
+                    <i class="fa-solid fa-calendar-days" style="font-size: 30px;"></i>
                 </div>
                 </a>
                 <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Ver Estatísticas</h3>
                     <p>Veja as estatísticas da barbearia</p>
-                    <img src="/img/grafico.png"class="vetor-card"  height="100px">
+                    <i class="fa-solid fa-square-poll-vertical" style="font-size: 30px;"></i>
                 </div>
                 </a>
             </div>

@@ -106,7 +106,7 @@ select, input[type="date"], input[type="time"] {
 
 input.btn-agendar {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     border: none;
     border-radius: 26px;
     background-color: var(--apoio1);
