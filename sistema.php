@@ -235,11 +235,11 @@ h3 {
         <label for="barbeiro">Escolha o Barbeiro:</label>
         <select id="barbeiro" name="barbeiro" required>
             <option value="">Selecione um barbeiro</option>
-            <option value="23">Matheus Barbosa</option>
-            <option value="1">Vinicius Fraile</option>
-            <option value="2">Danylo Vieira</option>
-            <option value="3">Igor Góes</option>
-            <option value="5">Diogenes Henrique</option>
+            <option value="5">Matheus Barbosa</option>
+            <option value="2">Vinicius Fraile</option>
+            <option value="3">Danylo Vieira</option>
+            <option value="4">Igor Góes</option>
+            <option value="6">Diogenes Henrique</option>
         </select>
     </div>
 
