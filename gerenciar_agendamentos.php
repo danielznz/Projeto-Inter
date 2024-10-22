@@ -293,9 +293,9 @@ input[type="submit"] {
         }
         #modal-content {
             background: white;
-            padding: 20px;
-            border-radius: 5px;
-            width: 300px;
+            padding: 50px;
+            border-radius: 26px;
+            width: 325px;
         }
     </style>
 
