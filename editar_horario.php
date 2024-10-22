@@ -53,33 +53,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['horario'])) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Horário</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 </head>
 <style>
-    body{
+body {
     font-family: "Montserrat", sans-serif;
     background-image: url(img/back2.svg);
     justify-content: center;
     align-items: center;
     height: 100vh;
     color: #333;
-    margin-top:50px;
-    margin-bottom: 50px;
+    margin: 0;
     padding: 20px;
-    }
+    overflow: hidden;
+}
 
-    h2 {
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+.back a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;;
+    border-radius: 26px;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back a:hover {
+    background-color:#2980b9;
+    color: white;
+}
+
+.back a::before {
+    content: "\f0a8"; 
+    font-weight: 900;
+    margin-right: 10px; 
+}
+
+
+h2 {
     text-align: center;
     color: #2c3e50;
-    font-size: 24px;
+    font-size: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+
 }
 
    form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 75vh;
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 26px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    width: 500px;
+    height: 550px;
     margin: 0 auto;
 }
 
@@ -88,7 +131,21 @@ label {
     color: #2c3e50;
     display: block;
     margin-bottom: 5px;
+    font-size: 1.2rem;
 }
+
+
+input[type="submit"] {
+    background-color: #29ae60;
+    padding: 20px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0px;
+}
+
 
 input[type="time"],
 input[type="submit"],
@@ -110,14 +167,30 @@ input[type="time"]:focus {
 
 </style>
 <body>
-<div class="back_gerenciar">
-    <a href="#" class="fa-solid fa-circle-left">Voltar</a>
-</div>
-    <form action="editar_horario.php?id=<?= $id ?>" method="POST">
-    <h2>Editar Horário</h2>
+<div class="back">
+        <a href="gerenciar_agendamentos.php" class="fa-solid fa-circle-arrow-left">Voltar</a>
+    </div>
+
+
+    <form id="editarHorarioForm" action="editar_horario.php?id=<?= $id ?>" method="POST">
+        <h2>Editar Horário</h2>
         <label for="horario">Novo Horário:</label><br>
         <input type="time" name="horario" value="<?= $horario_atual ?>" required><br><br>
         <input type="submit" value="Atualizar Horário">
     </form>
+    <script>
+        document.getElementById('editarHorarioForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Seu horário foi atualizado!',
+                showConfirmButton: false,
+                timer: 2000
+            }).then(() => {
+                document.getElementById('editarHorarioForm').submit();
+            });
+        });
+    </script>
 </body>
 </html>

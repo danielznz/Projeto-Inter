@@ -54,6 +54,10 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <title>Gerenciar Agendamentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
     function adicionarHorario() {
         var container = document.getElementById('horarios-container');
@@ -73,7 +77,7 @@ $horarios_existentes = $result->fetch_all(MYSQLI_ASSOC);
         document.getElementById('modal-editar').style.display = 'none';
     }
     </script>
-    <style>
+  <style>
        /* Estilos Gerais */
 body {
     font-family: "Montserrat", sans-serif;
@@ -84,20 +88,32 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    overflow: hidden;
 }
 
 h2 {
     text-align: center;
     color: #2c3e50;
-    font-size: 24px;
+    font-size: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+
 }
 
+.container-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 75vh;
+}
 form {
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 26px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    width: 500px;
+    height: 550px;
     margin: 0 auto;
 }
 
@@ -106,6 +122,7 @@ label {
     color: #2c3e50;
     display: block;
     margin-bottom: 5px;
+    font-size: 1.2rem;
 }
 
 input[type="date"],
@@ -160,35 +177,25 @@ input[type="time"]:focus {
 }
 .button-container{
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
-button[type="button"] {
-    background-color: #20563E;
-    color: #ffff;
-    padding: 10px 20px;
-    border-radius: 26px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 48%; 
-}
-
-button[type="button"]:hover {
-    background-color: #2980b9;
-}
 
 button {
-    background-color: #20563E;
-    color: #fff;
-    border: none;
+    margin-top: 2rem;
+    color: #000;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    padding: 15px 20px;
+    background-color: #ccc;
+    width: 230px;
+    margin: 10px;
+
 }
 
-button:hover {
-    background-color: #2980b9;
-}
+
+
 
 #horarios-container input[type="time"] {
     margin-bottom: 10px;
@@ -200,16 +207,14 @@ button:hover {
 }
 
 input[type="submit"] {
-    background-color: #27ae60;
+    background-color: #29ae60;
+    padding: 20px 20px;
+    font-size: 1.2rem;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #2980b9;
-
+    margin: 0px;
 }
 
 /* Modal */
@@ -293,13 +298,14 @@ input[type="submit"]:hover {
             width: 300px;
         }
     </style>
+
 </head>
 <body>
 <div class="back">
     <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
 </div>
     <h2>Gerenciar Disponibilidade</h2>
-    <form action="gerenciar_agendamentos.php" method="post">
+    <form id="gerenciarAgendamentosForm" action="gerenciar_agendamentos.php?id=<?= $id ?>" method="POST">
         <label for="data">Selecione os dias disponíveis:</label><br>
         <input type="date" name="data" required><br><br>
 
@@ -308,8 +314,8 @@ input[type="submit"]:hover {
             <input type="time" name="horarios[]" required><br>
         </div>
         <div class="button-container">
-        <button type="button" onclick="adicionarHorario()">Adicionar Horário</button>
-        <button type="button" onclick="abrirModal()">Ver Horários Cadastrados</button>
+        <button type="button" onclick="adicionarHorario()">Adicionar Horário <i class="fa-solid fa-plus" style="font-size: 15px;"></i></button>
+        <button type="button" onclick="abrirModal()">Ver Horários <i class="fa-solid fa-eye"style="font-size: 15px;" ></i></button>
         <br><br>
         </div>
         <input type="submit" name="submit" value="Salvar Disponibilidade">
@@ -338,5 +344,20 @@ input[type="submit"]:hover {
             <button type="button" onclick="fecharModal()">Fechar</button>
         </div>
     </div>
+    <script>
+        document.getElementById('gerenciarAgendamentosForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Seu horário foi salvo!',
+                showConfirmButton: false,
+                timer: 2500
+            }).then(() => {
+                document.getElementById('gerenciarAgendamentosForm').submit();
+            });
+        });
+    </script>
+
 </body>
 </html>
