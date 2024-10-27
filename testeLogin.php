@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['usuario_id'] = $usuario_id; // ID do barbeiro logado
+
 
 if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
     // Acessa o sistema

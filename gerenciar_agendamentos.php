@@ -88,7 +88,6 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
-    overflow: hidden;
 }
 
 h2 {
@@ -113,7 +112,7 @@ form {
     border-radius: 26px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: 500px;
-    height: 550px;
+    max-height: 1550px;
     margin: 0 auto;
 }
 
@@ -305,6 +304,7 @@ input[type="submit"] {
     <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
 </div>
     <h2>Gerenciar Disponibilidade</h2>
+    <a href="admin_agendamentos.php">sd</a>
     <form action="gerenciar_agendamentos.php" method="post">
         <label for="data">Selecione os dias disponíveis:</label><br>
         <input type="date" name="data" required><br><br>

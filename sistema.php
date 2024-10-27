@@ -1,43 +1,52 @@
 <?php
-session_start();
-
-if(isset($_POST['submit-agendamento'])) {
+session_start(); // Inicia a sessão para acessar as variáveis de sessão
+if (isset($_POST['submit-agendamento'])) {
+    include_once('config.php');
+    // Pega o ID do usuário logado da sessão
+    $usuario_id = $_SESSION['usuario_id'];
     $servico = $_POST['servico'];
     $barbeiro = $_POST['barbeiro'];
     $data = $_POST['data'];
     $horario = $_POST['horario'];
-
-    // Pega o email do usuário logado (ajuste conforme seu sistema de login)
-    // Exemplo: usando $_SESSION se o usuário tiver feito login com sessões
-    $emailUsuario = $_SESSION['email'];  // Ajuste de acordo com seu sistema
-
-    // Configuração do e-mail
-    $to = $emailUsuario;
-    $subject = "Confirmação de Agendamento - Barbearia";
-    $message = "
-    Olá, seu agendamento foi confirmado!
-    Detalhes do agendamento:
-    Serviço: $servico
-    Barbeiro: $barbeiro
-    Data: $data
-    Horário: $horario
-
-    Obrigado por escolher a nossa barbearia!
-    ";
-    $headers = "From: no-reply@barbearia.com";  // Ajuste o endereço de origem
-
-    // Enviar o e-mail
-    if(mail($to, $subject, $message, $headers)) {
-        echo "<script>alert('Agendamento realizado com sucesso! Um e-mail de confirmação foi enviado.');</script>";
+    // Inclui o ID do usuário na inserção do agendamento
+    $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario, usuario_id) 
+    VALUES('$servico','$barbeiro','$data','$horario', '$usuario_id')");
+    if ($result) {
+        // Redireciona para a mesma página ou para uma página de sucesso
+        header("Location: sistema.php?success=true");
+        exit();
     } else {
-        echo "<script>alert('Erro ao enviar o e-mail de confirmação. Tente novamente.');</script>";
+        // Caso de erro
+        echo "
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro no agendamento',
+                    text: 'Ocorreu um erro ao tentar registrar o agendamento.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
     }
-
-    // Processar o agendamento (exemplo de inserção no banco)
-    // ...
+    
+    mysqli_close($conexao);
+}
+// Exibe mensagem de sucesso se o agendamento foi realizado com sucesso
+if (isset($_GET['success']) && $_GET['success'] == 'true') {
+    echo "
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Agendamento realizado!',
+                text: 'Seu agendamento foi registrado com sucesso.',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>";
 }
 ?>
-
 
 
 <!DOCTYPE html>
