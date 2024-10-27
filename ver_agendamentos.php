@@ -88,8 +88,11 @@ h2 {
 .btn-primary {
     background-color: #d4a55d; 
     border-color: #d4a55d;
-    color: #2c2c2c; 
+    color: #2c2c2c;
+    border-radius: 26px;
 }
+
+
 
 .btn-primary:hover {
     background-color: #b48c47;
@@ -102,7 +105,7 @@ p {
     color: #2C2C2C;
 }
 
-.fas.fa-ban {
+.fa-solid {
     color: red;      
     font-size: 20px; 
     margin-left: 30px; 
@@ -139,7 +142,7 @@ a {
                             <td><?php echo date('d/m/Y', strtotime($row['data'])); ?></td>
                             <td><?php echo $row['horario']; ?>
                                 <a href="#" class="cancelar-servico" data-id="<?php echo $row['idagendamento']; ?>">
-                                    <i class="fas fa-ban"></i> Cancelar Serviço
+                                    <i class="fa-solid fa-ban"></i>Cancelar Serviço
                                 </a>
                             </td>
                         </tr>

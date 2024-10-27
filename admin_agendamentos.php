@@ -1,76 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+
+
 <?php
 session_start();
 include_once('config.php');
 
-
-// Pega o ID do barbeiro logado
 $barbeiro_id = $_SESSION['usuario_id'];
-
-// Busca os agendamentos que ainda não foram notificados e que pertencem ao barbeiro logado
 $result = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
 
-// Exibe a lista de agendamentos
+echo "<div class='container'>";
+echo "<h2>Novos Agendamentos</h2>";
+
 if (mysqli_num_rows($result) > 0) {
-    echo "<h2>Novos Agendamentos:</h2>";
-    echo "<ul>";
+    echo "<table class='table'>";
+    echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
+    echo "<tbody>";
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<li>";
-        echo "Serviço: " . $row['servico'] . "<br>";
-        echo "Data: " . $row['data'] . "<br>";
-        echo "Horário: " . $row['horario'] . "<br>";
-        echo "<a href='marcar_visto.php?id=" . $row['idagendamento'] . "'>Marcar como Visto</a>";
-        echo "</li><br>";
+        echo "<tr>";
+        echo "<td>" . $row['servico'] . "</td>";
+        echo "<td>" . $row['data'] . "</td>";
+        echo "<td>" . $row['horario'] . "</td>";
+        echo "<td><a href='marcar_visto.php?id=" . $row['idagendamento'] . "' class='button-primary'>Marcar como Visto</a>";
+        echo "<a href='cancelar.php?id=" . $row['idagendamento'] . "' class='button-cancel'><i class='fas fa-ban'></i>Cancelar</a></td>";
+        echo "</tr>";
     }
-    echo "</ul>";
+    echo "</tbody></table>";
 } else {
-    echo "Nenhum novo agendamento.";
+    echo "<div class='alert'>Nenhum novo agendamento.</div>";
 }
+
+echo "<div class='button-container'><a href='adm.php' class='button-primary'>Voltar</a></div>";
+echo "</div>";
 ?>
-
 <style>
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    /* Estilos Gerais */
+body {
+    background-image: url(img/back2.svg);
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 20px;
 }
 
+.container {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 26px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+}
+
+/* Título */
 h2 {
-    color: #333;
+    font-weight: bold;
+    color: #d4a55d;
+    margin-bottom: 30px;
     text-align: center;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+/* Tabela de Agendamentos */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
 }
 
-li {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.table thead {
+    background-color: #1f3d33;
+    color: #d4a55d;
+}
+
+.table thead th {
     padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-li a {
-    text-decoration: none;
-    color: #007bff;
     font-weight: bold;
 }
 
-li a:hover {
-    text-decoration: underline;
+.table tbody tr {
+    background-color: #f9f9f9;
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    li {
-        padding: 10px;
-    }
+.table tbody tr:hover {
+    background-color: #f1f1f1;
 }
-    </style>
+
+.table tbody td {
+    padding: 15px;
+    text-align: center;
+    color: #2C2C2C;
+}
+
+/* Botões */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-primary {
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
+    color: #2c2c2c;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 26px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+    color: #fff;
+    background-color: #b48c47;
+    border-color: #b48c47;
+}
+
+.button-cancel {
+    color: red;      
+    font-size: 15px; 
+    margin-left: 30px; 
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.button-cancel:hover {
+    color: darkred;
+}
+
+.button-cancel i {
+    margin-right: 5px;
+}
+
+
+.fa-solid {
+    color: red;      
+    font-size: 20px; 
+    margin-left: 30px; 
+}
+
+/* Alerta */
+.alert {
+    text-align: center;
+    font-size: 18px;
+    color: #2C2C2C;
+    margin-top: 20px;
+}
+
+</style>

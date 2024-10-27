@@ -290,7 +290,7 @@ h3 {
             <option value="20">Vinicius Fraile</option>
             <option value="21">Danylo Vieira</option>
             <option value="22">Igor Góes</option>
-            <option value="24">Diogenes Henrique</option>
+            <option value="6">Diogenes Henrique</option>
         </select>
     </div>
 

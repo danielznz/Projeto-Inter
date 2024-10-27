@@ -151,9 +151,9 @@
             <a href="#">Dashboard</a>
             <a href="adm_create.php"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Administrador</a>
             <a href="#"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
-            <a href="#"><img src="img/menu/menu-gerenciar.png" class="menu-img" >Gerenciar Barbeiros</a>
-            <a href="gerenciar_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
-            <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
+            <a href="#"><img src="img/menu/menu-gerenciars.png" class="menu-img" >Horarios agendados</a>
+            <a href="admin_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
+            <a href="gernciar_agendamentos.php"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
             <h1>Painel Administrativo</h1>
@@ -165,14 +165,14 @@
                     <i class="fa-solid fa-user-tie" style="font-size: 30px;"></i>
                 </div>
                 </a>
-                <a href="adm_create.php" class="card-link">
+                <a href="admin_agendamentos.php" class="card-link">
                 <div class="card">
-                    <h3>Gerenciar Barbeiros</h3>
-                    <p>Controle os horários e informações dos barbeiros</p>
-                    <i class="fa-solid fa-list-check" style="font-size: 30px;"></i>
+                    <h3>Horarios Agendados</h3>
+                    <p>Controle os horários e informações dos agendamentos</p>
+                    <i class="fa-solid fa-clock" style="font-size: 30px;"></i>
                 </div>
                 </a>
-                <a href="adm_create.php" class="card-link">
+                <a href="gerenciar_agendamentos.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Agendamentos</h3>
                     <p>Acompanhe e gerencie os agendamentos</p>

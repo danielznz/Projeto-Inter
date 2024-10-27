@@ -181,7 +181,7 @@ body{
             </div>
             <input type="submit" class="btn-login" name="submit" value="Cadastrar">
             <div class="no-register">
-                <a href="adm.html">Voltar ao Menu</a>
+                <a href="adm.php">Voltar a tela de Adm</a>
             </div>
         </div>
     </form>
