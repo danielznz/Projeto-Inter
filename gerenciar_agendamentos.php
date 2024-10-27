@@ -305,7 +305,7 @@ input[type="submit"] {
     <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
 </div>
     <h2>Gerenciar Disponibilidade</h2>
-    <form id="gerenciarAgendamentosForm" action="gerenciar_agendamentos.php?id=<?= $id ?>" method="POST">
+    <form action="gerenciar_agendamentos.php" method="post">
         <label for="data">Selecione os dias disponíveis:</label><br>
         <input type="date" name="data" required><br><br>
 

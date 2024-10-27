@@ -1,3 +1,45 @@
+<?php
+session_start();
+
+if(isset($_POST['submit-agendamento'])) {
+    $servico = $_POST['servico'];
+    $barbeiro = $_POST['barbeiro'];
+    $data = $_POST['data'];
+    $horario = $_POST['horario'];
+
+    // Pega o email do usuário logado (ajuste conforme seu sistema de login)
+    // Exemplo: usando $_SESSION se o usuário tiver feito login com sessões
+    $emailUsuario = $_SESSION['email'];  // Ajuste de acordo com seu sistema
+
+    // Configuração do e-mail
+    $to = $emailUsuario;
+    $subject = "Confirmação de Agendamento - Barbearia";
+    $message = "
+    Olá, seu agendamento foi confirmado!
+    Detalhes do agendamento:
+    Serviço: $servico
+    Barbeiro: $barbeiro
+    Data: $data
+    Horário: $horario
+
+    Obrigado por escolher a nossa barbearia!
+    ";
+    $headers = "From: no-reply@barbearia.com";  // Ajuste o endereço de origem
+
+    // Enviar o e-mail
+    if(mail($to, $subject, $message, $headers)) {
+        echo "<script>alert('Agendamento realizado com sucesso! Um e-mail de confirmação foi enviado.');</script>";
+    } else {
+        echo "<script>alert('Erro ao enviar o e-mail de confirmação. Tente novamente.');</script>";
+    }
+
+    // Processar o agendamento (exemplo de inserção no banco)
+    // ...
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,11 +277,11 @@ h3 {
         <label for="barbeiro">Escolha o Barbeiro:</label>
         <select id="barbeiro" name="barbeiro" required>
             <option value="">Selecione um barbeiro</option>
-            <option value="5">Matheus Barbosa</option>
-            <option value="2">Vinicius Fraile</option>
-            <option value="3">Danylo Vieira</option>
-            <option value="4">Igor Góes</option>
-            <option value="6">Diogenes Henrique</option>
+            <option value="23">Matheus Barbosa</option>
+            <option value="20">Vinicius Fraile</option>
+            <option value="21">Danylo Vieira</option>
+            <option value="22">Igor Góes</option>
+            <option value="24">Diogenes Henrique</option>
         </select>
     </div>
 
