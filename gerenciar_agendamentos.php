@@ -31,12 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data']) && isset($_PO
         $stmt_insert->execute();
     }
 
-    // Verificação de sucesso
-    if ($stmt_insert->affected_rows > 0) {
-        echo "Horários atualizados com sucesso!";
-    } else {
-        echo "Erro ao atualizar os horários.";
-    }
 }
 
 // Carregar horários para a data mais recente
@@ -304,7 +298,6 @@ input[type="submit"] {
     <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
 </div>
     <h2>Gerenciar Disponibilidade</h2>
-    <a href="admin_agendamentos.php">sd</a>
     <form action="gerenciar_agendamentos.php" method="post">
         <label for="data">Selecione os dias disponíveis:</label><br>
         <input type="date" name="data" required><br><br>

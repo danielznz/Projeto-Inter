@@ -2,15 +2,18 @@
 session_start(); // Inicia a sessão para acessar as variáveis de sessão
 if (isset($_POST['submit-agendamento'])) {
     include_once('config.php');
+    
     // Pega o ID do usuário logado da sessão
     $usuario_id = $_SESSION['usuario_id'];
     $servico = $_POST['servico'];
     $barbeiro = $_POST['barbeiro'];
     $data = $_POST['data'];
     $horario = $_POST['horario'];
+    
     // Inclui o ID do usuário na inserção do agendamento
     $result = mysqli_query($conexao, "INSERT INTO agendamento(servico, barbeiro, data, horario, usuario_id) 
     VALUES('$servico','$barbeiro','$data','$horario', '$usuario_id')");
+    
     if ($result) {
         // Redireciona para a mesma página ou para uma página de sucesso
         header("Location: sistema.php?success=true");
@@ -32,6 +35,7 @@ if (isset($_POST['submit-agendamento'])) {
     
     mysqli_close($conexao);
 }
+
 // Exibe mensagem de sucesso se o agendamento foi realizado com sucesso
 if (isset($_GET['success']) && $_GET['success'] == 'true') {
     echo "
@@ -46,6 +50,11 @@ if (isset($_GET['success']) && $_GET['success'] == 'true') {
         });
     </script>";
 }
+
+// Consulta para carregar os serviços disponíveis
+include_once('config.php'); // Certifique-se de que a conexão esteja aberta
+$query = "SELECT nome, preco FROM servicos WHERE ativo = 1";
+$result = $conexao->query($query);
 ?>
 
 
@@ -270,46 +279,51 @@ h3 {
             </button>
         </div>
         <div class="form-container">
-        <form action="sistema.php" method="POST">
-    <div class="form-section">
-        <label for="servico">Escolha o Serviço:</label>
-        <select id="servico" name="servico" required>
-            <option value="Corte - R$ 30,00">Corte - R$ 30,00</option>
-            <option value="Barba - R$ 20,00">Barba - R$ 20,00</option>
-            <option value="Sobrancelha - R$ 15,00">Sobrancelha - R$ 15,00</option>
-            <option value="Corte + Barba - R$ 45,00">Corte + Barba - R$ 45,00</option>
-            <option value="Corte + Barba + Sobrancelha - R$ 55,00">Corte + Barba + Sobrancelha - R$ 55,00</option>
-        </select>
-    </div>
-
-    <div class="form-section">
-        <label for="barbeiro">Escolha o Barbeiro:</label>
-        <select id="barbeiro" name="barbeiro" required>
-            <option value="">Selecione um barbeiro</option>
-            <option value="23">Matheus Barbosa</option>
-            <option value="20">Vinicius Fraile</option>
-            <option value="21">Danylo Vieira</option>
-            <option value="22">Igor Góes</option>
-            <option value="6">Diogenes Henrique</option>
-        </select>
-    </div>
-
-    <div class="form-section">
-        <label for="data">Escolha a Data:</label>
-        <input type="date" id="data" name="data" required>
-    </div>
-
-    <div class="form-section">
-        <label for="horario">Escolha o Horário:</label>
-        <select id="horario" name="horario" required>
-            <option value="">Selecione um horário</option>
-        </select>
-    </div>
-
-    <input type="submit" class="btn-agendar" name="submit-agendamento" id="submit-agendamento" value="Enviar">
-</form>
-
+    <form action="sistema.php" method="POST">
+        <div class="form-section">
+            <label for="servico">Escolha o Serviço:</label>
+            <select id="servico" name="servico" required>
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<option value="' . $row['nome'] . ' - R$ ' . number_format($row['preco'], 2, ',', '.') . '">'
+                     . $row['nome'] . ' - R$ ' . number_format($row['preco'], 2, ',', '.') .
+                     '</option>';
+            }
+        } else {
+            echo '<option value="">Nenhum serviço disponível</option>';
+        }
+        ?>
+    </select>
         </div>
+
+        <div class="form-section">
+            <label for="barbeiro">Escolha o Barbeiro:</label>
+            <select id="barbeiro" name="barbeiro" required>
+                <option value="">Selecione um barbeiro</option>
+                <option value="23">Matheus Barbosa</option>
+                <option value="20">Vinicius Fraile</option>
+                <option value="21">Danylo Vieira</option>
+                <option value="22">Igor Góes</option>
+                <option value="24">Diogenes Henrique</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label for="data">Escolha a Data:</label>
+            <input type="date" id="data" name="data" required>
+        </div>
+
+        <div class="form-section">
+            <label for="horario">Escolha o Horário:</label>
+            <select id="horario" name="horario" required>
+                <option value="">Selecione um horário</option>
+            </select>
+        </div>
+
+        <input type="submit" class="btn-agendar" name="submit-agendamento" id="submit-agendamento" value="Enviar">
+    </form>
+</div>
         </div>
 
         <div>
