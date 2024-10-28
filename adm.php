@@ -1,3 +1,29 @@
+<?php
+    session_start();
+    include_once('config.php');
+
+    $barbeiro_id = $_SESSION['usuario_id'];
+    $result = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table class='table'>";
+        echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
+        echo "<tbody>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['servico'] . "</td>";
+            echo "<td>" . $row['data'] . "</td>";
+            echo "<td>" . $row['horario'] . "</td>";
+            echo "<td><a href='marcar_visto.php?id=" . $row['idagendamento'] . "' class='button-primary'>Marcar como Visto</a>";
+            echo "<a href='cancelar.php?id=" . $row['idagendamento'] . "' class='button-cancel'><i class='fas fa-ban'></i>Cancelar</a></td>";
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+    } else {
+        echo "";
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,7 +205,7 @@
                     <i class="fa-solid fa-calendar-days" style="font-size: 30px;"></i>
                 </div>
                 </a>
-                <a href="adm_create.php" class="card-link">
+                <a href="estatisticas.php?barbeiro_id=<?php echo $barbeiro_id; ?>" class="button-primary">
                 <div class="card">
                     <h3>Ver Estatísticas</h3>
                     <p>Veja as estatísticas da barbearia</p>

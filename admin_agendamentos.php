@@ -4,48 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Document</title>
+    <title>Agendamentos</title>
 </head>
 <body>
-    
+
+<div class='container'>
+    <h2>Novos Agendamentos</h2>
+
+    <?php
+    session_start();
+    include_once('config.php');
+
+    $barbeiro_id = $_SESSION['usuario_id'];
+    $result = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table class='table'>";
+        echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
+        echo "<tbody>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['servico'] . "</td>";
+            echo "<td>" . $row['data'] . "</td>";
+            echo "<td>" . $row['horario'] . "</td>";
+            echo "<td><a href='marcar_visto.php?id=" . $row['idagendamento'] . "' class='button-primary'>Marcar como Visto</a>";
+            echo "<a href='cancelar.php?id=" . $row['idagendamento'] . "' class='button-cancel'><i class='fas fa-ban'></i>Cancelar</a></td>";
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+    } else {
+        echo "<div class='alert'>Nenhum novo agendamento.</div>";
+    }
+    ?>
+
+    <!-- Botão para ver as estatísticas -->
+    <div class='button-container'>
+        <a href="estatisticas.php?barbeiro_id=<?php echo $barbeiro_id; ?>" class="button-primary">Ver Estatísticas</a>
+        <a href="adm.php" class="button-primary">Voltar</a>
+    </div>
+</div>
+
 </body>
 </html>
 
-
-
-
-
-<?php
-session_start();
-include_once('config.php');
-
-$barbeiro_id = $_SESSION['usuario_id'];
-$result = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
-
-echo "<div class='container'>";
-echo "<h2>Novos Agendamentos</h2>";
-
-if (mysqli_num_rows($result) > 0) {
-    echo "<table class='table'>";
-    echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
-    echo "<tbody>";
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>" . $row['servico'] . "</td>";
-        echo "<td>" . $row['data'] . "</td>";
-        echo "<td>" . $row['horario'] . "</td>";
-        echo "<td><a href='marcar_visto.php?id=" . $row['idagendamento'] . "' class='button-primary'>Marcar como Visto</a>";
-        echo "<a href='cancelar.php?id=" . $row['idagendamento'] . "' class='button-cancel'><i class='fas fa-ban'></i>Cancelar</a></td>";
-        echo "</tr>";
-    }
-    echo "</tbody></table>";
-} else {
-    echo "<div class='alert'>Nenhum novo agendamento.</div>";
-}
-
-echo "<div class='button-container'><a href='adm.php' class='button-primary'>Voltar</a></div>";
-echo "</div>";
-?>
 <style>
     /* Estilos Gerais */
 body {

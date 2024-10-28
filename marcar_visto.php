@@ -2,21 +2,20 @@
 session_start();
 include_once('config.php');
 
-
-// Verifica se o ID foi passado via URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $barbeiro_id = $_SESSION['usuario_id'];
 
-    // Atualiza o campo 'notificado_adm' para 1 (visto)
-    $sql = "UPDATE agendamento SET notificado_adm = 1 WHERE idagendamento = ?";
+    // Atualiza o status do agendamento para "concluído" e "visto"
+    $sql = "UPDATE agendamento SET notificado_adm = 1, status = 'concluido' WHERE idagendamento = ? AND barbeiro = ?";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("ii", $id, $barbeiro_id);
 
     if ($stmt->execute()) {
-        header("Location: admin_agendamentos.php"); // Redireciona de volta para a página dos agendamentos
+        header("Location: admin_agendamentos.php"); // Retorna para a página de agendamentos
         exit();
     } else {
-        echo "Erro ao marcar como visto.";
+        echo "Erro ao marcar como concluído.";
     }
 } else {
     echo "ID de agendamento não fornecido.";
