@@ -62,6 +62,31 @@ $query = "SELECT * FROM servicos";
 $result = $conexao->query($query);
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Serviços</title>
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<?php if (isset($_GET['success']) && $_GET['success'] === 'true'): ?>
+<script>
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Serviço adicionado com sucesso!",
+        showConfirmButton: false,
+        timer: 2000
+    });
+</script>
+<?php endif; ?>
+
 <h2>Gerenciar Serviços</h2>
 
 <!-- Formulário para adicionar novo serviço -->
@@ -103,7 +128,7 @@ $result = $conexao->query($query);
                         <input type='number' name='preco' value='{$row['preco']}' step='0.01' required>
                         <input type='submit' name='editar_servico' value='Editar'>
                     </form>
-                    <a href='gerenciar_servicos.php?delete_id={$row['id']}' onclick='return confirm(\"Tem certeza que deseja excluir este serviço?\")'>Excluir</a>
+                    <a href='javascript:void(0);' onclick='confirmDelete({$row['id']})'>Excluir</a>
                 </td>
             </tr>";
         }
@@ -112,7 +137,37 @@ $result = $conexao->query($query);
     }
     ?>
 </table>
+<script>
+    function confirmDelete(id) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
 
+        swalWithBootstrapButtons.fire({
+            title: "Tem certeza?",
+            text: "Essa ação não poderá ser revertida!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sim, excluir!",
+            cancelButtonText: "Não, cancelar!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `gerenciar_servicos.php?delete_id=${id}`;
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelado",
+                    text: "O serviço está seguro :)",
+                    icon: "error"
+                });
+            }
+        });
+    }
+</script>
 <?php
 // Fecha a conexão
 $conexao->close();
@@ -120,145 +175,167 @@ $conexao->close();
 
 
 <style>
-/* Estilos Gerais */
-body {
-    background-image: url(img/back2.svg);
-    font-family: "Montserrat", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    :root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f8f8f8;
+    --text-color: #333;
+    --border-color: #ddd;
+    --button-color: #4CAF50;
+    --button-hover: #45a049;
+    --font-family: Arial, sans-serif;
 }
 
-.container {
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 26px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+/* Estilo geral */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-image: url(img/back2.svg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Título */
-h2 {
-    font-weight: bold;
-    color: #d4a55d;
-    margin-bottom: 30px;
-    text-align: center;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 10px;
+h2, h3 {
+    color: #d4a55d; 
+    margin-top: 1rem;
 }
 
 /* Formulário */
 form {
-    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 26px;
+    margin-bottom: 2rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
 label {
     font-weight: bold;
-    color: #2c2c2c;
+    display: block;
+    margin: 0.5rem 0 0.25rem;
 }
 
 input[type="text"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #d4a55d;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 26px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 input[type="submit"] {
-    background-color: #d4a55d;
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
     color: #2c2c2c;
-    padding: 10px 15px;
+    padding: 0.7rem 1.5rem;
     border: none;
     border-radius: 26px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
-    color: #fff;
-    background-color: #b48c47;
+    background-color: var(--button-hover);
 }
 
-/* Tabela de Serviços */
+/* Tabela */
 table {
     width: 100%;
+    max-width: 800px;
     border-collapse: collapse;
-    margin: 30px 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
-thead {
-    background-color: #1f3d33;
-    color: #d4a55d;
+th, td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
 }
 
-thead th {
-    padding: 15px;
+th {
+    background-color: #1f3d33; 
+    color: #d4a55d; 
     font-weight: bold;
 }
 
-tbody tr {
-    background-color: #f9f9f9;
-    transition: background-color 0.2s;
+td {
+    color: var(--text-color);
 }
 
-tbody tr:hover {
-    background-color: #f1f1f1;
+
+table td form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 180px;
 }
 
-tbody td {
-    padding: 15px;
-    text-align: center;
-    color: #2C2C2C;
+table td form input[type="text"],
+table td form input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
 }
 
-/* Botões de Ações */
-button, .button-cancel {
+table td form input[type="submit"] {
     background-color: #d4a55d;
-    color: #2c2c2c;
-    padding: 8px 12px;
+    color: #fff;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
+    border-radius: 6px;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 5px;
 }
 
-button:hover, .button-cancel:hover {
-    color: #fff;
-    background-color: #b48c47;
+table td form input[type="submit"]:hover {
+    background-color: #b38c4b;
 }
 
-.button-cancel {
-    background-color: transparent;
-    color: red;
-    font-size: 14px;
-    margin-left: 0;
-    padding: 0;
-    border: none;
-    cursor: pointer;
+/* Estilo para o link "Excluir" */
+table td a {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.button-cancel:hover {
-    color: darkred;
+table td a:hover {
+    color: #c9302c;
 }
 
-/* Alerta */
-.alert {
-    text-align: center;
-    font-size: 18px;
-    color: #2C2C2C;
-    margin-top: 20px;
+
+a {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+a:hover {
+    color: #c9302c;
+}
+
 </style>
+
