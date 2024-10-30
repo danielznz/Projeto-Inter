@@ -179,7 +179,8 @@
             <a href="#"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
             <a href="#"><img src="img/menu/menu-gerenciars.png" class="menu-img" >Horarios agendados</a>
             <a href="admin_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
-            <a href="gernciar_agendamentos.php"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
+            <a href="gerenciar_servicos.php"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Promoções</a>
+            <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
             <h1>Painel Administrativo</h1>
@@ -210,6 +211,13 @@
                     <h3>Ver Estatísticas</h3>
                     <p>Veja as estatísticas da barbearia</p>
                     <i class="fa-solid fa-square-poll-vertical" style="font-size: 30px;"></i>
+                </div>
+                </a>
+                <a href="gerenciar_servicos.php" class="card-link">
+                  <div class="card">
+                    <h3>Criar Promoções</h3>
+                    <p>Crie promoções especiais aqui para o seu cliente</p>
+                    <i class="fa-solid fa-cash-register" style="font-size: 30px;"></i>
                 </div>
                 </a>
             </div>

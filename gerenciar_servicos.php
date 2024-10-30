@@ -68,9 +68,8 @@ $result = $conexao->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Serviços</title>
-    <!-- SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <!-- SweetAlert JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -86,6 +85,10 @@ $result = $conexao->query($query);
     });
 </script>
 <?php endif; ?>
+
+<div class="back">
+    <a href="adm.php" class="fa-solid fa-circle-left"> Voltar Para Tela de ADM</a>
+</div>
 
 <h2>Gerenciar Serviços</h2>
 
@@ -197,6 +200,38 @@ body {
     align-items: center;
 }
 
+.back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.back a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+    border-radius: 26px;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back a:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+.back a::before {
+    content: "\f0a8";
+    font-weight: 900;
+    margin-right: 10px;
+}
 /* Título */
 h2, h3 {
     color: #d4a55d; 
@@ -234,9 +269,9 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: #d4a55d; 
+    background-color: #29ae60;
     border-color: #d4a55d;
-    color: #2c2c2c;
+    color: #fff;
     padding: 0.7rem 1.5rem;
     border: none;
     border-radius: 26px;
@@ -246,7 +281,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: var(--button-hover);
+    background-color: #29ae60;
 }
 
 /* Tabela */
@@ -301,7 +336,7 @@ table td form input[type="number"] {
 }
 
 table td form input[type="submit"] {
-    background-color: #d4a55d;
+    background-color: #29ae60;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -312,10 +347,10 @@ table td form input[type="submit"] {
 }
 
 table td form input[type="submit"]:hover {
-    background-color: #b38c4b;
+    background-color: #29ae60;
 }
 
-/* Estilo para o link "Excluir" */
+
 table td a {
     color: #d9534f;
     text-decoration: none;
