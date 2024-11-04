@@ -131,6 +131,7 @@
             border-radius: 26px;
             border: 1px solid #e0e0e0;
             text-align: center;
+            height: 200px;
             transition: transform 0.2s, box-shadow 0.2s;
             margin: 0;
         }
@@ -151,6 +152,7 @@
         .card p {
             font-size: 16px;
             margin-bottom: 20px;
+            margin-top: 2rem;
         }
         .p-header{
             font-size: 1rem;
@@ -174,44 +176,50 @@
     <div class="flex">
     <div class="container">
         <div class="sidebar">
-            <a href="#">Dashboard</a>
+            <a href="W">Dashboard</a>
             <a href="adm_create.php"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Administrador</a>
-            <a href="#"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
-            <a href="#"><img src="img/menu/menu-gerenciars.png" class="menu-img" >Horarios agendados</a>
+            <a href="estatisticas.php"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
+            <a href="admin_agendamentos.php"><img src="img/menu/menu-gerenciar.png" class="menu-img" >Horarios agendados</a>
             <a href="admin_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
-            <a href="gernciar_agendamentos.php"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
+            <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
-            <h1>Painel Administrativo</h1>
+            <h1>Painel Administrativo</h1>   <hr><br><br>
             <div class="grid-container">
                 <a href="adm_create.php" class="card-link">
                 <div class="card">
                     <h3>Criar Administrador</h3>
                     <p>Adicione novos administradores ao sistema</p>
-                    <i class="fa-solid fa-user-tie" style="font-size: 30px;"></i>
+                    <i class="fa-solid fa-user-tie" style="font-size: 70px;"></i>
                 </div>
                 </a>
                 <a href="admin_agendamentos.php" class="card-link">
                 <div class="card">
                     <h3>Horarios Agendados</h3>
                     <p>Controle os horários e informações dos agendamentos</p>
-                    <i class="fa-solid fa-clock" style="font-size: 30px;"></i>
+                    <i class="fa-solid fa-clock" style="font-size: 70px;"></i>
                 </div>
                 </a>
                 <a href="gerenciar_agendamentos.php" class="card-link">
                 <div class="card">
                     <h3>Gerenciar Agendamentos</h3>
                     <p>Acompanhe e gerencie os agendamentos</p>
-                    <i class="fa-solid fa-calendar-days" style="font-size: 30px;"></i>
+                    <i class="fa-solid fa-calendar-days" style="font-size: 70px;"></i>
                 </div>
                 </a>
-                <a href="estatisticas.php?barbeiro_id=<?php echo $barbeiro_id; ?>" class="button-primary">
+                <a href="estatisticas.php?barbeiro_id=<?php echo $barbeiro_id; ?>" class="card-link">
                 <div class="card">
                     <h3>Ver Estatísticas</h3>
                     <p>Veja as estatísticas da barbearia</p>
-                    <i class="fa-solid fa-square-poll-vertical" style="font-size: 30px;"></i>
+                    <i class="fa-solid fa-square-poll-vertical" style="font-size: 70px;"></i>
                 </div>
                 </a>
+                <a href="gerenciar_servicos.php" class="card-link">
+                <div class="card">
+                    <h3>Gerenciar Serviços</h3>
+                    <p>Gerencie Serviços e cire Promoções para os clientes!</p>
+                    <i class="fa-solid f" style="font-size: 70px;"></i>
+                </div>
             </div>
         </div>
     </div>

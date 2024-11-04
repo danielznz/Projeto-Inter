@@ -235,15 +235,20 @@ h3 {
     margin-bottom: 15px;
 }
 
+.link-header{
+    text-decoration: none;
+}
+
 </style>
 <body>
     <header>
-        <div class="logo">
+        <a href="index.html" class="link-header"><div class="logo">
             <h1 class="title-session"><img src="img/main-conteudo/logo-nw.png" alt="Logo da Barbearia"> Agendamento New Age</h1>
         </div>
         <div class="ver-agendamentos">
         <a href="ver_agendamentos.php" class="btn btn-primary">Ver meus agendamentos</a>
         </div>
+        </a>
     </header>
 
     <div>
@@ -306,6 +311,7 @@ h3 {
                 <option value="21">Danylo Vieira</option>
                 <option value="22">Igor Góes</option>
                 <option value="24">Diogenes Henrique</option>
+                <option value="26">Eduardo</option>
             </select>
         </div>
 

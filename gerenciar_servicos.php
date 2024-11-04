@@ -124,7 +124,7 @@ $conexao->close();
 body {
     background-image: url(img/back2.svg);
     font-family: "Montserrat", sans-serif;
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -133,18 +133,19 @@ body {
 
 .container {
     background-color: #ffffff;
-    padding: 50px;
-    border-radius: 26px;
+    padding: 40px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 900px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
 }
 
 /* Título */
 h2 {
     font-weight: bold;
     color: #d4a55d;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
     border-bottom: 2px solid #e9ecef;
     padding-bottom: 10px;
@@ -152,40 +153,45 @@ h2 {
 
 /* Formulário */
 form {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 label {
     font-weight: bold;
     color: #2c2c2c;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #d4a55d;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
+    outline: none;
 }
 
 input[type="submit"] {
     background-color: #d4a55d;
-    color: #2c2c2c;
-    padding: 10px 15px;
+    color: #ffffff;
+    padding: 12px 20px;
     border: none;
-    border-radius: 26px;
+    border-radius: 20px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
 }
 
 input[type="submit"]:hover {
-    color: #fff;
     background-color: #b48c47;
 }
 
@@ -193,38 +199,35 @@ input[type="submit"]:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 30px 0;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #2c2c2c;
 }
 
-thead {
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
     background-color: #1f3d33;
-    color: #d4a55d;
-}
-
-thead th {
-    padding: 15px;
+    color: #ffffff;
     font-weight: bold;
 }
 
-tbody tr {
+tbody tr:nth-child(even) {
     background-color: #f9f9f9;
-    transition: background-color 0.2s;
 }
 
 tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-tbody td {
-    padding: 15px;
-    text-align: center;
-    color: #2C2C2C;
-}
-
 /* Botões de Ações */
 button, .button-cancel {
     background-color: #d4a55d;
-    color: #2c2c2c;
+    color: #ffffff;
     padding: 8px 12px;
     border: none;
     border-radius: 20px;
@@ -236,7 +239,6 @@ button, .button-cancel {
 }
 
 button:hover, .button-cancel:hover {
-    color: #fff;
     background-color: #b48c47;
 }
 
@@ -244,9 +246,7 @@ button:hover, .button-cancel:hover {
     background-color: transparent;
     color: red;
     font-size: 14px;
-    margin-left: 0;
     padding: 0;
-    border: none;
     cursor: pointer;
 }
 
