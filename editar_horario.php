@@ -52,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['horario'])) {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Horário</title>
+    <title>New Age Saloon</title>
+    <link rel="icon" href="img/main-conteudo/logo-nw.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

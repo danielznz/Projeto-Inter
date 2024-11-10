@@ -47,7 +47,8 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Administrador</title>
+    <title>New Age Saloon</title>
+    <link rel="icon" href="img/main-conteudo/logo-nw.png" type="image/x-icon">
 </head>
 
 <style>

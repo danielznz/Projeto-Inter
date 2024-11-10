@@ -43,6 +43,9 @@
   margin: 0 auto;
 }
 
+.footer-p{
+  color: var(--apoio6);
+}
 
 .footer-content{
   background-color: var(--primaria);
@@ -89,7 +92,6 @@
   text-align: center;
   padding: 10px 20px;
   background-color: var(--apoio4);
-  color: var(--primaria)
 }
 
 @media (max-width: 768px) {
