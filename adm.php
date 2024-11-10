@@ -7,16 +7,8 @@
 
     if (mysqli_num_rows($result) > 0) {
         echo "<table class='table'>";
-        echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
         echo "<tbody>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>" . $row['servico'] . "</td>";
-            echo "<td>" . $row['data'] . "</td>";
-            echo "<td>" . $row['horario'] . "</td>";
-            echo "<td><a href='marcar_visto.php?id=" . $row['idagendamento'] . "' class='button-primary'>Marcar como Visto</a>";
-            echo "<a href='cancelar.php?id=" . $row['idagendamento'] . "' class='button-cancel'><i class='fas fa-ban'></i>Cancelar</a></td>";
-            echo "</tr>";
         }
         echo "</tbody></table>";
     } else {
@@ -177,11 +169,12 @@
     <div class="flex">
     <div class="container">
         <div class="sidebar">
-            <a href="W">Dashboard</a>
+            <br><br>
+            <p>Dashboard</p>
             <a href="adm_create.php"><img src="img/menu/menu-adm.png" class="menu-img" height="16px">Criar Administrador</a>
             <a href="estatisticas.php"><img src="img/menu/menu-grafico.png" class="menu-img" height="16px">Ver Estatísticas</a>
             <a href="admin_agendamentos.php"><img src="img/menu/menu-gerenciar.png" class="menu-img" >Horarios agendados</a>
-            <a href="admin_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
+            <a href="gerenciar_agendamentos.php"><img src="img/menu/menu-agendar.png" class="menu-img" height="16px">Agendamentos</a>
             <a href="index.html"><img src="img/menu/menu-sair.png"  class="menu-img" height="16px">Sair</a>
         </div>
         <div class="main-content">
@@ -219,7 +212,7 @@
                 <div class="card">
                     <h3>Gerenciar Serviços</h3>
                     <p>Gerencie Serviços e cire Promoções para os clientes!</p>
-                    <i class="fa-solid f" style="font-size: 70px;"></i>
+                    <i class="fa-solid fa-scissors" style="font-size: 70px;"></i>
                 </div>
             </div>
         </div>
