@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro.css">
-    <title>Tela de Login</title>
+    <title>New Age Saloon</title>
+    <link rel="icon" href="img/main-conteudo/logo-nw.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -37,72 +38,5 @@
         </div>
         </form>
     </div>
-
-    <!-- <script>
-        let isAdmin = false;
-
-        function handleLogin() {
-            const email = document.getElementById("email").value;
-            const senha = document.getElementById("senha").value;
-
-            if (email === "admin@nwsaloon" && senha === "admin123") {
-                isAdmin = true;
-                document.getElementById("admin-auth").style.display = "block";
-                Swal.fire({
-                    title: 'Admin Identificado!',
-                    text: 'Insira o código de administrador para continuar.',
-                    icon: 'info',
-                    confirmButtonText: 'OK'
-                });
-            } 
-            else if (email === "usuario@comum" && senha === "senhausuario") {
-                Swal.fire({
-                    title: 'Sucesso!',
-                    text: 'Login realizado com sucesso!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = "adm.html";
-                });
-            } 
-            else {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Email ou senha incorretos!',
-                    icon: 'error',
-                    confirmButtonText: 'Tentar novamente'
-                });
-            }
-        }
-
-        function confirmarAdmin() {
-            const codigo = document.getElementById("codigo").value;
-
-            if (isAdmin && codigo === "codigoAdmin123") {
-                Swal.fire({
-                    title: 'Sucesso!',
-                    text: 'Bem-vindo, administrador!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = "adm.html"; 
-                });
-            } else if (isAdmin && codigo !== "codigoAdmin123") {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Código de administrador incorreto!',
-                    icon: 'error',
-                    confirmButtonText: 'Tentar novamente'
-                });
-            }
-        }
-        document.querySelector('.btn-login').addEventListener('click', function() {
-            if (isAdmin) {
-                confirmarAdmin();
-            } else {
-                handleLogin();
-            }
-        });
-    </script> -->
 </body>
 </html>

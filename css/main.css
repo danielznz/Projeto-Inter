@@ -1,5 +1,23 @@
 /*primeira sessão*/
 
+:root {
+    /* cores */
+    --apoio1: #ee7919;
+    --apoio2: #ff9a48;
+    --apoio3: #FEAD6C;
+    --apoio4: #2C2C2C;
+    --apoio5: #ccc;
+    --apoio6: #f2f2f2;
+    --branco: #ffffff;
+    --primaria: #1b1b1b;
+    --secundaria: #ffa155;
+    --texto: #333;
+    /* fontes */
+    --fonteServices: "Big Shoulders Display", sans-serif;
+    --fonteTitulo: "Montserrat", sans-serif;
+  }
+  
+
 .main-content {
     display: inline-block;
     left: 35%;
@@ -33,6 +51,8 @@
     padding: 20px;
 }
 
+
+
 .main-list a {
     color: var(--apoio6);
     font-size: 1.3rem;
@@ -52,6 +72,8 @@
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
+
+
 
 .main-subtitle {
     color: var(--apoio6);
@@ -98,6 +120,8 @@
     color: var(--primaria);
     transition: 0.3s ease;
 }
+
+
 
 @media (max-width: 1440px) {
     .main-list{
@@ -209,3 +233,5 @@
         padding: 15px 25px;        
     }
 }
+
+
