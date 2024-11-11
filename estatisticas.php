@@ -54,7 +54,15 @@
             font-size: 14px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+   
         }
+
+.button-primary:hover{
+    color: #fff;
+    background-color: #b48c47;
+    border-color: #b48c47;
+}  
+        
 .button-second {
     padding: 10px;
     color: #000;

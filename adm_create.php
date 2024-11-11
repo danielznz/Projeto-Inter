@@ -158,6 +158,7 @@ body{
 
 .no-register a {
     width: 100%;
+    cursor: pointer;
     font-size: 1.2rem;
     text-align: center;
     text-decoration: none;
@@ -167,6 +168,7 @@ body{
     color: #2c2c2c;
     border-radius: 26px;
 }
+
 
 
 </style>

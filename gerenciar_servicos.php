@@ -143,6 +143,9 @@ $conexao->close();
     text-decoration: none;
     display: inline-block;
     transition: background-color 0.3s;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 body {

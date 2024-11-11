@@ -203,7 +203,7 @@ button {
 }
 
 input[type="submit"] {
-    background-color: #29ae60;
+    background-color: #ee7919;
     padding: 20px 20px;
     font-size: 1.2rem;
     color: #fff;

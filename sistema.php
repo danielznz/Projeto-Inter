@@ -248,6 +248,12 @@ h3 {
     border-radius: 26px;
 }
 
+.btn_agendar:hover{
+    color: #fff;
+    background-color: #b48c47;
+    border-color: #b48c47; 
+}
+
 </style>
 <body>
     <header>
