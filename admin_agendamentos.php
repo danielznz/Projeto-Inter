@@ -8,22 +8,32 @@
     <link rel="icon" href="img/main-conteudo/logo-nw.png" type="image/x-icon">
 </head>
 <body>
-
+<div class="button-container">
+        <a href="adm.php" class="button-primary">Voltar</a>
+    </div>
+    <div class="body">
 <div class='container'>
+    
     <h2>Novos Agendamentos</h2>
+    
 
     <?php
     session_start();
     include_once('config.php');
-
+    
     $barbeiro_id = $_SESSION['usuario_id'];
-    $result = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
+    
+    // Consulta para agendamentos não vistos
+    $resultNovos = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 0 AND barbeiro = $barbeiro_id");
+    
+    // Consulta para agendamentos já vistos
+    $resultAnteriores = mysqli_query($conexao, "SELECT * FROM agendamento WHERE notificado_adm = 1 AND barbeiro = $barbeiro_id");
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($resultNovos) > 0) {
         echo "<table class='table'>";
         echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th><th>Detalhes</th></tr></thead>";
         echo "<tbody>";
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($resultNovos)) {
             echo "<tr>";
             echo "<td>" . $row['servico'] . "</td>";
             echo "<td>" . $row['data'] . "</td>";
@@ -38,28 +48,78 @@
     }
     ?>
 
-    <!-- Botão para ver as estatísticas -->
-    <div class='button-container'>
-        <a href="estatisticas.php?barbeiro_id=<?php echo $barbeiro_id; ?>" class="button-primary">Ver Estatísticas</a>
-        <a href="adm.php" class="button-primary">Voltar</a>
+    <!-- Botão para exibir os agendamentos anteriores -->
+    <button onclick="toggleAnteriores()" class="button-primary">Ver Agendamentos Anteriores</button>
+
+    <!-- Tabela de agendamentos anteriores escondida inicialmente -->
+    <div id="agendamentosAnteriores" style="display: none;">
+        <h2>Agendamentos Anteriores</h2>
+        <?php
+        if (mysqli_num_rows($resultAnteriores) > 0) {
+            echo "<table class='table'>";
+            echo "<thead><tr><th>Serviço</th><th>Data</th><th>Horário</th></tr></thead>";
+            echo "<tbody>";
+            while ($row = mysqli_fetch_assoc($resultAnteriores)) {
+                echo "<tr>";
+                echo "<td>" . $row['servico'] . "</td>";
+                echo "<td>" . $row['data'] . "</td>";
+                echo "<td>" . $row['horario'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</tbody></table>";
+        } else {
+            echo "<div class='alert'>Nenhum agendamento anterior.</div>";
+        }
+        ?>
     </div>
 </div>
+    </div>
+
+
+
 
 </body>
 </html>
 
+<script>
+function toggleAnteriores() {
+    var section = document.getElementById("agendamentosAnteriores");
+    if (section.style.display === "none") {
+        section.style.display = "block";
+    } else {
+        section.style.display = "none";
+    }
+}
+</script>
+
+
 <style>
     /* Estilos Gerais */
+
 body {
     background-image: url(img/back2.svg);
     font-family: "Montserrat", sans-serif;
-    display: flex;
+    align-items: center;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
+.body {
+    background-image: url(img/back2.svg);
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0;
+}
 
+.button-container{
+    display: flex;
+    margin: 2rem;
+    justify-content: left;
+}
 .container {
     background-color: #ffffff;
     padding: 50px;
@@ -168,5 +228,17 @@ h2 {
     color: #2C2C2C;
     margin-top: 20px;
 }
+
+.visto td {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.button-cancel {
+    color: red;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
 
 </style>

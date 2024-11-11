@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_servico'])) {
     $stmt->bind_param("ssdi", $nome, $descricao, $preco, $id);
 
     if ($stmt->execute()) {
-        echo "Serviço atualizado com sucesso!";
+        echo "";
     } else {
-        echo "Erro ao atualizar serviço: " . $stmt->error;
+        echo "" . $stmt->error;
     }
 
     $stmt->close();
@@ -49,9 +49,9 @@ if (isset($_GET['delete_id'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo "Serviço excluído com sucesso!";
+        echo "";
     } else {
-        echo "Erro ao excluir serviço: " . $stmt->error;
+        echo "" . $stmt->error;
     }
 
     $stmt->close();
@@ -61,7 +61,9 @@ if (isset($_GET['delete_id'])) {
 $query = "SELECT * FROM servicos";
 $result = $conexao->query($query);
 ?>
-
+<div class="button-container">
+        <a href="adm.php" class="button-primary">Voltar</a>
+    </div>
 <h2>Gerenciar Serviços</h2>
 
 <!-- Formulário para adicionar novo serviço -->
@@ -121,14 +123,36 @@ $conexao->close();
 
 <style>
 /* Estilos Gerais */
+
+.button-container{
+    display: flex;
+    margin: 2rem;
+    justify-content: left;
+}
+
+.button-primary {
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
+    color: #2c2c2c;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 26px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
 body {
     background-image: url(img/back2.svg);
     font-family: "Montserrat", sans-serif;
-    display: grid;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 90vh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .container {
@@ -136,8 +160,6 @@ body {
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 800px;
     margin: 20px;
 }
 
@@ -198,6 +220,7 @@ input[type="submit"]:hover {
 /* Tabela de Serviços */
 table {
     width: 100%;
+    min-width: 600px; /* Define largura mínima */
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 16px;
@@ -260,5 +283,5 @@ button:hover, .button-cancel:hover {
     font-size: 18px;
     color: #2C2C2C;
     margin-top: 20px;
+    min-width: 600px; /* Define largura mínima */
 }
-</style>
