@@ -238,6 +238,15 @@ h3 {
 .link-header{
     text-decoration: none;
 }
+ 
+.btn_agendar{
+    text-decoration: none;
+    padding: 13px;
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
+    color: #2c2c2c;
+    border-radius: 26px;
+}
 
 </style>
 <body>
@@ -246,7 +255,7 @@ h3 {
             <h1 class="title-session"><img src="img/main-conteudo/logo-nw.png" alt="Logo da Barbearia"> Agendamento New Age</h1>
         </div>
         <div class="ver-agendamentos">
-        <a href="ver_agendamentos.php" class="btn btn-primary">Ver meus agendamentos</a>
+        <a href="ver_agendamentos.php" class="btn_agendar">Ver meus agendamentos</a>
         </div>
         </a>
     </header>

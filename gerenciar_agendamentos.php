@@ -146,21 +146,24 @@ input[type="time"]:focus {
 }
 
 .back a {
-    text-decoration: none;
-    color: #333;
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
+    color: #2c2c2c;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 26px;
     font-size: 16px;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    padding: 10px 25px;;
-    border-radius: 26px;
-    background-color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
 }
 
 .back a:hover {
-    background-color:#2980b9;
-    color: white;
+    color: #fff;
+    background-color: #b48c47;
+    border-color: #b48c47;
 }
 
 .back a::before {

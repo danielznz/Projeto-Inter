@@ -8,7 +8,7 @@
     <link rel="icon" href="img/main-conteudo/logo-nw.png" type="image/x-icon">
     <style>
         body {
-            background-color: #f3f4f6;
+            background-image: url(img/back2.svg);
             font-family: Arial, sans-serif;
             color: #333;
             display: grid;
@@ -44,6 +44,7 @@
 
         .button-primary {
             padding: 10px 15px;
+            text-decoration: none;
             color: #000;
             background-color: #d4a55d;
             border: none;

@@ -151,8 +151,21 @@ body{
 }
 
 .no-register {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem; /* ajuste de acordo com o espaço desejado */
+}
+
+.no-register a {
+    width: 100%;
+    font-size: 1.2rem;
     text-align: center;
-    margin-top: 2rem;
+    text-decoration: none;
+    padding: 15px;
+    background-color: #d4a55d; 
+    border-color: #d4a55d;
+    color: #2c2c2c;
+    border-radius: 26px;
 }
 
 
@@ -182,7 +195,7 @@ body{
             </div>
             <input type="submit" class="btn-login" name="submit" value="Cadastrar">
             <div class="no-register">
-                <a href="adm.php">Voltar a tela de Adm</a>
+                <a href="adm.php">Voltar</a>
             </div>
         </div>
     </form>
